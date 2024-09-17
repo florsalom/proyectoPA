@@ -1,4 +1,10 @@
 
-public class JefeLimpieza {
-
+public class JefeLimpieza extends Empleados{
+	
+	public JefeLimpieza(int id, String cargo, String nombre, String apellido, String dni, String mail,
+			String contrasena) {
+		super(id, cargo, nombre, apellido, dni, mail, contrasena);
+		
+	}
+	
 }
