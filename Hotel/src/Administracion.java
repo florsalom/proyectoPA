@@ -5,7 +5,26 @@ public class Administracion extends Empleados {
 		super(id, cargo, nombre, apellido, dni, mail, contrasena);
 		
 	}
-	
+	public void Checkin() {
+		
+	}
+	public void Checkout(Cliente cliente) {
+		
+	}
+	public String Generar_factura() {
+		String factura="";
+		return factura;
+	}
+
+	public int Ingresar_descuento(int costo){
+		return costo;
+	}
+
+	public void Reservar_Actividades(){
+		
+	}
+
+	public void Buscar_Cliente(){}
 	
 	
 	

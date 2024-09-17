@@ -2,14 +2,13 @@ import java.util.LinkedList;
 
 public class Hotel {
 	
-	private LinkedList empleados;
-	private LinkedList clientes;
-	private LinkedList recreaciones;
-	private LinkedList reservas_habitacion;
-	private LinkedList reservas_recreacion;
-	private LinkedList facturas;
-	public Hotel(LinkedList empleados, LinkedList clientes, LinkedList recreaciones, LinkedList reservas_habitacion,
-			LinkedList reservas_recreacion, LinkedList facturas) {
+	private LinkedList <Empleados>empleados=new LinkedList<Empleados>();
+	private LinkedList <Cliente>clientes=new LinkedList <Cliente>();
+	private LinkedList <Recreacion>recreaciones=new LinkedList <Recreacion>();
+	private LinkedList <ReservaHabitaciones>reservas_habitacion=new LinkedList <ReservaHabitaciones>();
+	private LinkedList <ReservaRecreacion>reservas_recreacion=new LinkedList<ReservaRecreacion>();
+	private LinkedList <Factura>facturas=new LinkedList<Factura>();
+	public Hotel() {
 		super();
 		this.empleados = empleados;
 		this.clientes = clientes;
