@@ -1,3 +1,4 @@
+import java.util.LinkedList;
 
 public class Empleados {
 
@@ -64,6 +65,10 @@ public class Empleados {
 	public String toString() {
 		return "Empleados [id=" + id + ", cargo=" + cargo + ", nombre=" + nombre + ", apellido=" + apellido + ", dni="
 				+ dni + ", mail=" + mail + ", contrasena=" + contrasena + "]";
+	}
+	
+	public void menu() {
+		
 	}
 	
 	
