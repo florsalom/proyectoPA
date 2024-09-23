@@ -1,6 +1,5 @@
-import java.util.LinkedList;
 
-public class Empleados {
+public class Empleado {
 
 	private int id;
 	private String cargo;
@@ -9,7 +8,7 @@ public class Empleados {
 	private String dni;
 	private String mail;
 	private String contrasena;
-	public Empleados(int id, String cargo, String nombre, String apellido, String dni, String mail, String contrasena) {
+	public Empleado(int id, String cargo, String nombre, String apellido, String dni, String mail, String contrasena) {
 		super();
 		this.id = id;
 		this.cargo = cargo;
@@ -68,6 +67,18 @@ public class Empleados {
 	}
 	
 	public void menu() {
+		
+	}
+	public static Empleado Login(String mail, String contrasena) {
+		Hotel hotel= Hotel_Singleton.getHotel();
+		Empleado a=null;
+		for (Empleado empleado : hotel.getEmpleados()) {
+			if (mail.equals(empleado.getMail())&&contrasena.equals(empleado.getContrasena())) {
+				a=empleado;
+				break;
+			}
+		}
+		return a;
 		
 	}
 	

@@ -1,15 +1,2 @@
-/Administracion.class
-/Cargos.class
-/Cliente.class
-/Empleados.class
-/Factura.class
-/Habitaciones.class
-/Hotel.class
-/JefeLimpieza.class
-/Limpieza.class
-/Main.class
-/Recreacion.class
-/ReservaHabitaciones.class
-/ReservaRecreacion.class
-/listaEmpleados.class
-/Menu.class
+/Empleado.class
+/Hotel_Singleton.class

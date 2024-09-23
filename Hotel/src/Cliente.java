@@ -22,6 +22,17 @@ public class Cliente {
 		this.fecha_entrada = fecha_entrada;
 		this.fecha_salida = fecha_salida;
 	}
+	public Cliente() {
+		super();
+		this.id = 0;
+		this.nombre = "";
+		this.apellido = "";
+		this.dni = "";
+		this.cantidad = 0;
+		this.celular = null;
+		this.fecha_entrada = null;
+		this.fecha_salida = null;
+	}
 	public int getId() {
 		return id;
 	}
