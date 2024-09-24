@@ -1,4 +1,4 @@
-import java.util.LinkedList;
+
 
 import javax.swing.JOptionPane;
 
@@ -12,18 +12,19 @@ public class Limpieza extends Empleado{
 	@Override
 	public void menu() {
 		int menu=5;
-		String [] opciones = {"Asignar Trabajo","Salir"};
+		String [] opciones = {"Ver Trabajo","Salir"};
 		do {
 			menu=JOptionPane.showOptionDialog(null, "Que desea realizar hoy", null, 0, 0, null, opciones, opciones[0]);
 			switch (menu) {
 			case 0:
-				asignar_Trabajo();
+				ver_Trabajo();
 				break;
-
+				
+	
 		}
 		} while (menu!=1);
 	}
-	public void asignar_Trabajo() {
-		JOptionPane.showMessageDialog(null, "Asignar Trabajo");
+	public void ver_Trabajo() {
+		JOptionPane.showMessageDialog(null, "Ver Trabajo");
 	}
 }

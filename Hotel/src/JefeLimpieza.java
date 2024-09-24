@@ -10,24 +10,29 @@ public class JefeLimpieza extends Empleado {
 			String contrasena) {
 		super(id, cargo, nombre, apellido, dni, mail, contrasena);
 	}
-		
 	@Override
 	public void menu() {
 		int menu=5;
-		String [] opciones = {"Ver Trabajo","Salir"};
+		String [] opciones = {"Asignar Trabajo","Ver habitación","Salir"};
 		do {
 			menu=JOptionPane.showOptionDialog(null, "Que desea realizar hoy", null, 0, 0, null, opciones, opciones[0]);
 			switch (menu) {
 			case 0:
-				ver_Trabajo();
+				asignar_Trabajo();
 				break;
-	
+			case 1:
+				ver_Habitacion();
+				break;
+
 		}
 		} while (menu!=1);
 	}
-	public void ver_Trabajo() {
-		JOptionPane.showMessageDialog(null, "Ver Trabajo");
+	public void asignar_Trabajo() {
+		JOptionPane.showMessageDialog(null, "Asignar Trabajo");
 	}
+public void ver_Habitacion() {
+	JOptionPane.showMessageDialog(null, "Ver habitación");
+}
 
 
 

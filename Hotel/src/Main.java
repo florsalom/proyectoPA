@@ -14,7 +14,7 @@ public static void main(String[] args) {
 	//listaEmpleados.getInstance();
 
 	String[] opcionEmpleado = {"Iniciar sesión",
-			"Registrarse",
+			//"Registrarse",
 			"Salir"};
 	int menu =0 ;
 	do {

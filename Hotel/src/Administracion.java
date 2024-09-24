@@ -8,8 +8,8 @@ public class Administracion extends Empleado {
 	}
 	@Override
 	public void menu() {
-		int menu=5;
-		String [] opciones = {"Check-In","Check-out","Reservar Actividades","Buscar Cliente","Salir"};
+		int menu=6;
+		String [] opciones = {"Check-In","Check-out","Reservar Actividades","Buscar Cliente","Ver habitación","Salir"};
 		Cliente a = new Cliente();
 		do {
 			menu=JOptionPane.showOptionDialog(null, "Que desea realizar hoy", null, 0, 0, null, opciones, opciones[0]);
@@ -28,9 +28,15 @@ public class Administracion extends Empleado {
 		case 3:
 			buscar_Cliente();
 			break;
+		case 4:
+			ver_Habitacion();
+			break;
 		}
-		} while (menu!=4);
+		} while (menu!=5);
 		
+	}
+	public void ver_Habitacion() {
+		JOptionPane.showMessageDialog(null, "Ver habitación");
 	}
 	public void checkIn() {
 		JOptionPane.showMessageDialog(null, "Check-In");
