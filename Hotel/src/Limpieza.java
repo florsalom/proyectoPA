@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 public class Limpieza extends Empleado{
 
-	public Limpieza(int id, String cargo, String nombre, String apellido, String dni, String mail,
+	public Limpieza(int id, int cargo, String nombre, String apellido, int dni, String mail,
 			String contrasena) {
 		super(id, cargo, nombre, apellido, dni, mail, contrasena);
 		

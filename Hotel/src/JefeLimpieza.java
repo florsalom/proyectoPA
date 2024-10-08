@@ -6,7 +6,7 @@ public class JefeLimpieza extends Empleado {
 //public class JefeLimpieza {
 
 //=======
-	public JefeLimpieza(int id, String cargo, String nombre, String apellido, String dni, String mail,
+	public JefeLimpieza(int id, int cargo, String nombre, String apellido, int dni, String mail,
 			String contrasena) {
 		super(id, cargo, nombre, apellido, dni, mail, contrasena);
 	}

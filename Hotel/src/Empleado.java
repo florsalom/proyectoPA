@@ -2,13 +2,13 @@
 public class Empleado {
 
 	private int id;
-	private String cargo;
+	private int cargo;
 	private String nombre;
 	private String apellido;
-	private String dni;
+	private int dni;
 	private String mail;
 	private String contrasena;
-	public Empleado(int id, String cargo, String nombre, String apellido, String dni, String mail, String contrasena) {
+	public Empleado(int id, int cargo, String nombre, String apellido, int dni, String mail, String contrasena) {
 		super();
 		this.id = id;
 		this.cargo = cargo;
@@ -24,10 +24,10 @@ public class Empleado {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getCargo() {
+	public int getCargo() {
 		return cargo;
 	}
-	public void setCargo(String cargo) {
+	public void setCargo(int cargo) {
 		this.cargo = cargo;
 	}
 	public String getNombre() {
@@ -42,10 +42,10 @@ public class Empleado {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public String getDni() {
+	public int getDni() {
 		return dni;
 	}
-	public void setDni(String dni) {
+	public void setDni(int dni) {
 		this.dni = dni;
 	}
 	public String getMail() {

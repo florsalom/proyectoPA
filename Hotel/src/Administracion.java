@@ -1,7 +1,7 @@
 import javax.swing.JOptionPane;
 
 public class Administracion extends Empleado {
-	public Administracion(int id, String cargo, String nombre, String apellido, String dni, String mail,
+	public Administracion(int id, int cargo, String nombre, String apellido, int dni, String mail,
 			String contrasena) {
 		super(id, cargo, nombre, apellido, dni, mail, contrasena);
 		

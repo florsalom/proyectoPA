@@ -5,9 +5,9 @@ public class Main {
 public static void main(String[] args) {
 	
 	Hotel hotel= Hotel_Singleton.getHotel();
-	hotel.getEmpleados().add(new Empleado(0,"Administrador","","","","a@a","1234"));
-	hotel.getEmpleados().add(new Empleado(0,"JefeLimpieza","","","","b@b","1234"));
-	hotel.getEmpleados().add(new Empleado(0,"Limpieza","","","","c@c","1234"));
+	hotel.getEmpleados().add(new Empleado(0,1,"","",0,"a@a","1234"));
+	hotel.getEmpleados().add(new Empleado(0,2,"","",0,"b@b","1234"));
+	hotel.getEmpleados().add(new Empleado(0,3,"","",0,"c@c","1234"));
 	
 	
 	
