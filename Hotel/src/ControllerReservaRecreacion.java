@@ -1,5 +1,6 @@
 import java.sql.Date;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
@@ -17,8 +18,8 @@ public class ControllerReservaRecreacion {
 					con.prepareStatement("INSERT INTO `reserva_recreacion`(`id_cliente_fk`, `id_recreacion_fk`, `inicio`, `fin`) VALUES (?,?,?,?)");
 			statement.setInt(1, reservarecreacion.getId_cliente_fk());
 			statement.setInt(2, reservarecreacion.getId_recreacion_fk());
-			statement.setDate(3, Date.valueOf(reservarecreacion.getInicio()));
-			statement.setDate(4, Date.valueOf(reservarecreacion.getFin()));
+			statement.setTimestamp(3, Timestamp.valueOf(reservarecreacion.getInicio()));
+			statement.setTimestamp(4, Timestamp.valueOf(reservarecreacion.getFin()));
 			int filas = statement.executeUpdate();
 			if(filas>0) {
 				JOptionPane.showMessageDialog(null, "Se agregó");
@@ -38,8 +39,9 @@ System.out.println("No se agregó");		}
 					con.prepareStatement("SELECT * FROM `reserva_recreacion`");
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
-				 
-				reservarecreacion.add(new ReservaRecreacion(resultSet.getInt("id"),resultSet.getInt("id_cliente_fk"), resultSet.getInt("id_recreacion_fk"),resultSet.getDate("inicio").toLocalDate(),resultSet.getDate("fin").toLocalDate()));
+				
+				reservarecreacion.add(new ReservaRecreacion(resultSet.getInt("id"),resultSet.getInt("id_cliente_fk"), resultSet.getInt("id_recreacion_fk"),
+						resultSet.getTimestamp("inicio").toLocalDateTime(),resultSet.getTimestamp("fin").toLocalDateTime()));
 			}
 			
 		} catch (Exception e) {
@@ -57,7 +59,8 @@ System.out.println("No se agregó");		}
 			statement.setInt(1, id);
 			ResultSet resultSet = statement.executeQuery();
 			if (resultSet.next()) {
-				nuevo = new ReservaRecreacion(resultSet.getInt("id"),resultSet.getInt("id_cliente_fk"), resultSet.getInt("id_recreacion_fk"),resultSet.getDate("inicio").toLocalDate(),resultSet.getDate("fin").toLocalDate());
+				nuevo = new ReservaRecreacion(resultSet.getInt("id"),resultSet.getInt("id_cliente_fk"), resultSet.getInt("id_recreacion_fk"),
+						resultSet.getTimestamp("inicio").toLocalDateTime(),resultSet.getTimestamp("fin").toLocalDateTime());
 			}
 		
 		} catch (Exception e) {
@@ -93,8 +96,8 @@ System.out.println("No se agregó");		}
 					con.prepareStatement("INSERT INTO `reserva_recreacion`(`id_cliente_fk`, `id_recreacion_fk`, `inicio`, `fin`) VALUES (?,?,?,?)");
 			statement.setInt(1, reservarecreacion.getId_cliente_fk());
 			statement.setInt(2, reservarecreacion.getId_recreacion_fk());
-			statement.setDate(3, Date.valueOf(reservarecreacion.getInicio()));
-			statement.setDate(4, Date.valueOf(reservarecreacion.getFin()));
+			statement.setTimestamp(3, Timestamp.valueOf(reservarecreacion.getInicio()));
+			statement.setTimestamp(4, Timestamp.valueOf(reservarecreacion.getFin()));
 			int filas = statement.executeUpdate();
 			if(filas>0) {
 				JOptionPane.showMessageDialog(null, "Se actualizó");
