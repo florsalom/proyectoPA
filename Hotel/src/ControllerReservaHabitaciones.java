@@ -89,7 +89,7 @@ System.out.println("No se agregó");		}
 		try {
 			
 			PreparedStatement statement = (PreparedStatement) 
-					con.prepareStatement("INSERT INTO `reserva_habitaciones`(`id_cliente_fk`, `id_habitacion_fk`, `fecha_entrada`, `fecha_salida`) VALUES (?,?,?,?)");
+					con.prepareStatement("UPDATE `reserva_habitacion` SET `id_cliente_fk`=?,`id_habitacion_fk`=?,`fecha_entrada`=?,`fecha_salida`=? WHERE `id`=?");
 			statement.setInt(1, reservahabitaciones.getId_cliente_fk());
 			statement.setInt(2, reservahabitaciones.getId_habitacion_fk());
 			statement.setDate(3, Date.valueOf(reservahabitaciones.getFecha_entrada()));

@@ -93,7 +93,7 @@ System.out.println("No se agregó");		}
 		try {
 			
 			PreparedStatement statement = (PreparedStatement) 
-					con.prepareStatement("INSERT INTO `reserva_recreacion`(`id_cliente_fk`, `id_recreacion_fk`, `inicio`, `fin`) VALUES (?,?,?,?)");
+					con.prepareStatement("UPDATE `reserva_recreacion` SET `id_cliente_fk`=?,`id_recreacion_fk`=?,`inicio`=?,`fin`=? WHERE `id`=?");
 			statement.setInt(1, reservarecreacion.getId_cliente_fk());
 			statement.setInt(2, reservarecreacion.getId_recreacion_fk());
 			statement.setTimestamp(3, Timestamp.valueOf(reservarecreacion.getInicio()));
