@@ -45,6 +45,7 @@ public class Administracion extends Empleado {
 		String nombre, apellido;
 		int dni=0, cantidad=0, celular=0;
 		LocalDate fecha_entrada= LocalDate.now();
+		
 		nombre=JOptionPane.showInputDialog("Ingrese nombre");
 		if (nombre.isEmpty()) {
 			flag=false;
