@@ -14,11 +14,9 @@ public class ControllerHabitaciones {
 		try {
 			
 			PreparedStatement statement = (PreparedStatement) 
-					con.prepareStatement("INSERT INTO `habitaciones`(`id_cliente__fk`, `id_recreacion_fk`, `fecha_entrada`, `fecha_salida`) VALUES (?,?,?,?)");
-			statement.setInt(1, habitaciones.getId_cliente_fk());
-			statement.setInt(2, habitaciones.getId_recreacion_fk());
-			statement.setDate(3, Date.valueOf(habitaciones.getFecha_entrada()));
-			statement.setDate(4, Date.valueOf(habitaciones.getFecha_salida()));
+					con.prepareStatement("INSERT INTO `habitaciones`(`costoXdia`, `tipo`) VALUES (?,?)");
+			statement.setInt(1, habitaciones.getCostoXdia());
+			statement.setString(2, habitaciones.getTipo());
 			int filas = statement.executeUpdate();
 			if(filas>0) {
 				JOptionPane.showMessageDialog(null, "Se agregó");
@@ -38,7 +36,7 @@ System.out.println("No se agregó");		}
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				 
-				habitaciones.add(new Habitaciones(resultSet.getInt("id"),resultSet.getInt("id_cliente_fk"), resultSet.getInt("id_recreacion_fk"),resultSet.getDate("fecha_entrada").toLocalDate(),resultSet.getDate("fecha_salida").toLocalDate()));
+				habitaciones.add(new Habitaciones(resultSet.getInt("id"),resultSet.getInt("costoXdia"), resultSet.getString("tipo")));
 			}
 			
 		} catch (Exception e) {
@@ -56,7 +54,7 @@ System.out.println("No se agregó");		}
 			statement.setInt(1, id);
 			ResultSet resultSet = statement.executeQuery();
 			if (resultSet.next()) {
-				nuevo = new Habitaciones(resultSet.getInt("id"),resultSet.getInt("id_cliente_fk"), resultSet.getInt("id_recreacion_fk"),resultSet.getDate("fecha_entrada").toLocalDate(),resultSet.getDate("fecha_salida").toLocalDate());
+				nuevo = new Habitaciones(resultSet.getInt("id"),resultSet.getInt("costoXdia"), resultSet.getString("tipo"));
 			}
 		
 		} catch (Exception e) {
@@ -89,15 +87,13 @@ System.out.println("No se agregó");		}
 		try {
 			
 			PreparedStatement statement = (PreparedStatement) 
-					con.prepareStatement("UPDATE `habitaciones` SET `id_cliente_fk`=?,`id_recreacion_fk`=?,`fecha_entrada`=?,`fecha_salida`=? WHERE `id`=?");
-			statement.setInt(1, habitaciones.getId_cliente_fk());
-			statement.setInt(2, habitaciones.getId_recreacion_fk());
-			statement.setDate(3, Date.valueOf(habitaciones.getFecha_entrada()));
-			statement.setDate(4, Date.valueOf(habitaciones.getFecha_salida()));
+					con.prepareStatement("UPDATE `habitaciones` SET `costoXdia`=?,`tipo`=? WHERE `id`=?");
+			statement.setInt(1, habitaciones.getCostoXdia());
+			statement.setString(2, habitaciones.getTipo());
 			int filas = statement.executeUpdate();
 			if(filas>0) {
 
-			statement.setInt(8, habitaciones.getId());
+			statement.setInt(3, habitaciones.getId());
 			}
 
 			int fila = statement.executeUpdate();

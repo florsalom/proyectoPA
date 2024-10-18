@@ -11,7 +11,7 @@ import com.mysql.jdbc.PreparedStatement;
 		try {
 			
 			PreparedStatement statement = (PreparedStatement) 
-					con.prepareStatement("INSERT INTO `reserva_habitaciones`(`id_cliente_fk`, `id_habitacion_fk`, `fecha_entrada`, `fecha_salida`) VALUES (?,?,?,?)");
+					con.prepareStatement("INSERT INTO `habitacion`(`tipo_habitacion_fk`, `cant_huespedes`, `estado_limpieza`) VALUES (?,?,?)");
 			statement.setInt(1, habitacion.getTipo_habitacion_fk());
 			statement.setInt(2, habitacion.getCant_huespedes());
 			statement.setInt(3, habitacion.getEstado_limpieza());
@@ -35,7 +35,7 @@ System.out.println("No se agregó");		}
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				 
-				habitacion.add(new Habitacion(resultSet.getInt("id"),resultSet.getInt("tipo_habitacion.fk"),resultSet.getInt("cant_huespedes"), resultSet.getInt("estado_limpieza")));
+				habitacion.add(new Habitacion(resultSet.getInt("id"),resultSet.getInt("tipo_habitacion_fk"),resultSet.getInt("cant_huespedes"), resultSet.getInt("estado_limpieza")));
 			}
 			
 		} catch (Exception e) {
@@ -53,7 +53,7 @@ System.out.println("No se agregó");		}
 			statement.setInt(1, id);
 			ResultSet resultSet = statement.executeQuery();
 			if (resultSet.next()) {
-				nuevo = new Habitacion(resultSet.getInt("id"),resultSet.getInt("tipo_habitacion.fk"),resultSet.getInt("cant_huespedes"), resultSet.getInt("estado_limpieza"));
+				nuevo = new Habitacion(resultSet.getInt("id"),resultSet.getInt("tipo_habitacion_fk"),resultSet.getInt("cant_huespedes"), resultSet.getInt("estado_limpieza"));
 			}
 		
 		} catch (Exception e) {
