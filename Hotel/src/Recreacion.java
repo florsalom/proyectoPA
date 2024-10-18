@@ -2,16 +2,13 @@
 public class Recreacion {
 
 	private int id;
-	private int costoXhora;
-	private String tipo;
 	private int capacidad;
-	public Recreacion(int id, int costoXhora, String tipo ,int capacidad) {
+	private int costoXhora;
+	public Recreacion(int id, int capacidad, int costoXhora) {
 		super();
 		this.id = id;
-		
-		this.costoXhora = costoXhora;
-		this.tipo=tipo;
 		this.capacidad = capacidad;
+		this.costoXhora = costoXhora;
 	}
 	public int getId() {
 		return id;
@@ -30,12 +27,6 @@ public class Recreacion {
 	}
 	public void setCostoXhora(int costoXhora) {
 		this.costoXhora = costoXhora;
-	}
-	public String getTipo() {
-		return tipo;
-	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
 	}
 	@Override
 	public String toString() {

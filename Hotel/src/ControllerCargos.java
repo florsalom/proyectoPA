@@ -87,7 +87,7 @@ System.out.println("No se agregó");		}
 		try {
 			
 			PreparedStatement statement = (PreparedStatement) 
-					con.prepareStatement("UPDATE `cargos` SET `cargo`=? WHERE `id`=?");
+					con.prepareStatement("UPDATE `cargos` SET `nombre`=?,`apellido`=?,`dni`=?,`cantidad`=?,`celular`=?,`fecha_entrada`=?,`fecha_salida`=? WHERE `id`=?");
 			statement.setInt(1, cargo.getId());
 			statement.setString(2, cargo.getCargo());
 
