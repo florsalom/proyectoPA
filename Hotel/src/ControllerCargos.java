@@ -14,7 +14,6 @@ public class ControllerCargos {
 			
 			PreparedStatement statement = (PreparedStatement) 
 					con.prepareStatement("INSERT INTO `cargos`(`cargo`) VALUES (?)");
-			statement.setInt(1, cargo.getId());
 			statement.setString(2, cargo.getCargo());
 			int filas = statement.executeUpdate();
 			if(filas>0) {
