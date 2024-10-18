@@ -73,6 +73,7 @@ public class Administracion extends Empleado {
 		}
 		
 		if (flag=true) {
+			
 			ControllerCliente.agregarCliente(new Cliente(0,nombre,apellido,dni,cantidad,celular,fecha_entrada));
 		}
 	}
