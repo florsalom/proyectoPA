@@ -9,7 +9,7 @@ public static void main(String[] args) {
 	hotel.getEmpleados().add(new Empleado(0,2,"","",0,"b@b","1234"));
 	hotel.getEmpleados().add(new Empleado(0,3,"","",0,"c@c","1234"));
 	
-	
+	ControllerReservaRecreacion.MostrarReservaRecreacion();
 	
 	//listaEmpleados.getInstance();
 
@@ -29,16 +29,16 @@ public static void main(String[] args) {
 		
 		if(encontrado!=null) {
 			JOptionPane.showMessageDialog(null, encontrado);
-			if (encontrado.getCargo().equals("Administrador")) {
+			if (encontrado.getCargo()==1) {
 				Administracion nuevo = new Administracion(encontrado.getId(),encontrado.getCargo(),encontrado.getNombre(),encontrado.getApellido(),encontrado.getDni(),encontrado.getMail(),encontrado.getContrasena());
 				nuevo.menu();
-			} else if (encontrado.getCargo().equals("JefeLimpieza")) {
+			} else if (encontrado.getCargo()==2) {
 				
 				JefeLimpieza nuevo = new JefeLimpieza(encontrado.getId(),encontrado.getCargo(),encontrado.getNombre(),encontrado.getApellido(),encontrado.getDni(),encontrado.getMail(),encontrado.getContrasena());
 				nuevo.menu();
 
 				
-			}else if (encontrado.getCargo().equals("Limpieza")) {
+			}else if (encontrado.getCargo()==3) {
 				Limpieza nuevo = new Limpieza(encontrado.getId(),encontrado.getCargo(),encontrado.getNombre(),encontrado.getApellido(),encontrado.getDni(),encontrado.getMail(),encontrado.getContrasena());
 				nuevo.menu();
 			}
@@ -47,14 +47,14 @@ public static void main(String[] args) {
 
 		}
 		break;
-		case 1: 
+		//case 1: 
 			//REgistrarse 
-			 mail = JOptionPane.showInputDialog("Ingrese mail");
-			 cont = JOptionPane.showInputDialog("Ingrese contraseña");
+			 //mail = JOptionPane.showInputDialog("Ingrese mail");
+			// cont = JOptionPane.showInputDialog("Ingrese contraseña");
 			
 			//ListaEmpleados.getInstance().add(new Empleado());
-			break;
-		case 2: 
+			//break;
+		case 1: 
 			JOptionPane.showMessageDialog(null, "Salir");
 			break;
 	}
@@ -63,6 +63,6 @@ public static void main(String[] args) {
 	
 
 	
-	} while (menu!=2);
+	} while (menu!=1);
 
 }}
