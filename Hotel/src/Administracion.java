@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
 
@@ -93,12 +94,19 @@ public class Administracion extends Empleado {
 		JOptionPane.showMessageDialog(null, "Reservar Actividades");
 	}
 
+	
+	
+
 	public void buscar_Cliente(){
-		JOptionPane.showMessageDialog(null, "Buscar Cliente");
+		int dni;
+		boolean flag = true;
+LinkedList<Cliente>Clientes=ControllerCliente.MostrarClientes();
+try {
+	dni=Integer.parseInt(JOptionPane.showInputDialog("Ingrese dni"));
+} catch (Exception e) {
+	flag=false;
+	JOptionPane.showMessageDialog(null, "El dni debe ser un numero");
+}
+	
 	}
-	
-	
-	
-	
-	
 }
