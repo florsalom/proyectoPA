@@ -13,10 +13,9 @@ public class ControllerRecreacion {
 		try {
 			
 			PreparedStatement statement = (PreparedStatement) 
-					con.prepareStatement("INSERT INTO `recreacion`(`costoXhora`,`tipo`, `capacidad`) VALUES (?,?,?)");
+					con.prepareStatement("INSERT INTO `recreacion`(`costoXhora`, `capacidad`) VALUES (?,?)");
 			statement.setInt(1, recreacion.getCostoXhora());
-			statement.setString(2, recreacion.getTipo());
-			statement.setInt(3, recreacion.getCapacidad());
+			statement.setInt(2, recreacion.getCapacidad());
 			int filas = statement.executeUpdate();
 			if(filas>0) {
 				JOptionPane.showMessageDialog(null, "Se agregó");
@@ -37,7 +36,7 @@ System.out.println("No se agregó");		}
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				 
-				recreacion.add(new Recreacion(resultSet.getInt("id"),resultSet.getInt("costoXhora"),resultSet.getString("tipo"),resultSet.getInt("cantidad")));
+				recreacion.add(new Recreacion(resultSet.getInt("id"),resultSet.getInt("dni"),resultSet.getInt("cantidad")));
 			}
 			
 		} catch (Exception e) {
@@ -55,7 +54,7 @@ System.out.println("No se agregó");		}
 			statement.setInt(1, id);
 			ResultSet resultSet = statement.executeQuery();
 			if (resultSet.next()) {
-				nuevo = new Recreacion(resultSet.getInt("id"),resultSet.getInt("costoXhora"),resultSet.getString("tipo"),resultSet.getInt("cantidad"));
+				nuevo = new Recreacion(resultSet.getInt("id"),resultSet.getInt("dni"),resultSet.getInt("cantidad"));
 			}
 		
 		} catch (Exception e) {
@@ -88,10 +87,9 @@ System.out.println("No se agregó");		}
 		try {
 			
 			PreparedStatement statement = (PreparedStatement) 
-					con.prepareStatement("UPDATE `recreacion` SET `costoXhora`=?, `tipo`=?,`capacidad`=? WHERE `id`=?");
+					con.prepareStatement("UPDATE `recreacion` SET `costoXhora`=?,`capacidad`=? WHERE `id`=?");
 			statement.setInt(1, recreacion.getCostoXhora());
-			statement.setString(2, recreacion.getTipo());
-			statement.setInt(3, recreacion.getCapacidad());
+			statement.setInt(2, recreacion.getCapacidad());
 
 			int fila = statement.executeUpdate();
 			if (fila>0) {

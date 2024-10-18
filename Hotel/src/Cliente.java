@@ -22,18 +22,6 @@ public class Cliente {
 		this.fecha_entrada = fecha_entrada;
 		this.fecha_salida = fecha_salida;
 	}
-	public Cliente(int id, String nombre, String apellido, int dni, int cantidad, int celular,
-			LocalDate fecha_entrada) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.dni = dni;
-		this.cantidad = cantidad;
-		this.celular = celular;
-		this.fecha_entrada = fecha_entrada;
-		this.fecha_salida = null;
-	}
 	public Cliente() {
 		super();
 		this.id = 0;

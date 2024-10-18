@@ -1,5 +1,3 @@
-import java.time.LocalDate;
-
 import javax.swing.JOptionPane;
 
 public class Administracion extends Empleado {
@@ -41,39 +39,7 @@ public class Administracion extends Empleado {
 		JOptionPane.showMessageDialog(null, "Ver habitación");
 	}
 	public void checkIn() {
-		boolean flag=true;
-		String nombre, apellido;
-		int dni=0, cantidad=0, celular=0;
-		LocalDate fecha_entrada= LocalDate.now();
-		nombre=JOptionPane.showInputDialog("Ingrese nombre");
-		if (nombre.isEmpty()) {
-			flag=false;
-		}
-		apellido=JOptionPane.showInputDialog("Ingrese apellido");
-		if (apellido.isEmpty()) {
-			flag=false;
-		}
-		
-		try {
-			dni=Integer.parseInt(JOptionPane.showInputDialog("Ingrese dni"));
-		} catch (Exception e) {
-			flag=false;
-			JOptionPane.showMessageDialog(null, "El dni debe ser un numero");
-		}try {
-			cantidad=Integer.parseInt(JOptionPane.showInputDialog("Ingrese cantidad"));
-		} catch (Exception e) {
-			flag=false;
-			JOptionPane.showMessageDialog(null, "La cantidad debe ser un numero");
-		}try {
-			celular=Integer.parseInt(JOptionPane.showInputDialog("ingrese celular"));
-		} catch (Exception e) {
-			flag=false;
-			JOptionPane.showMessageDialog(null, "El celular debe ser un numero");
-		}
-		
-		if (flag=true) {
-			ControllerCliente.agregarCliente(new Cliente(0,nombre,apellido,dni,cantidad,celular,fecha_entrada));
-		}
+		JOptionPane.showMessageDialog(null, "Check-In");
 	}
 	public void checkOut(Cliente cliente) {
 		JOptionPane.showMessageDialog(null, "Check-Out");

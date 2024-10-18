@@ -38,7 +38,7 @@ System.out.println("No se agregó");		}
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				 
-				reservahabitaciones.add(new ReservaHabitaciones(resultSet.getInt("id"),resultSet.getInt("id_cliente_fk"),resultSet.getInt("id_habitacion_fk"),resultSet.getDate("fecha_entrada").toLocalDate(),resultSet.getDate("fecha_salida").toLocalDate()));
+				ReservaHabitaciones.add(new ReservaHabitaciones(resultSet.getInt("id"),resultSet.getInt("id_cliente_fk"),resultSet.getInt("id_habitacion_fk"),resultSet.getDate("fecha_entrada").toLocalDate(),resultSet.getDate("fecha_salida").toLocalDate()));
 			}
 			
 		} catch (Exception e) {
@@ -89,7 +89,7 @@ System.out.println("No se agregó");		}
 		try {
 			
 			PreparedStatement statement = (PreparedStatement) 
-					con.prepareStatement("UPDATE `reserva_habitacion` SET `id_cliente_fk`=?,`id_habitacion_fk`=?,`fecha_entrada`=?,`fecha_salida`=? WHERE `id`=?");
+					con.prepareStatement("INSERT INTO `reserva_habitaciones`(`id_cliente_fk`, `id_habitacion_fk`, `fecha_entrada`, `fecha_salida`) VALUES (?,?,?,?)");
 			statement.setInt(1, reservahabitaciones.getId_cliente_fk());
 			statement.setInt(2, reservahabitaciones.getId_habitacion_fk());
 			statement.setDate(3, Date.valueOf(reservahabitaciones.getFecha_entrada()));
@@ -105,4 +105,4 @@ System.out.println("No se agregó");		}
 		
 		
 	}
-}
+}}

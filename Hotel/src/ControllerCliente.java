@@ -13,7 +13,7 @@ public class ControllerCliente {
 		try {
 			
 			PreparedStatement statement = (PreparedStatement) 
-					con.prepareStatement("INSERT INTO `cliente`(`nombre`, `apellido`, `dni`, `cantidad`, `celular`, `fecha_entrada`) VALUES (?,?,?,?,?,?)");
+					con.prepareStatement("INSERT INTO `cliente`(`nombre`, `apellido`, `dni`, `cantidad`, `celular`, `fecha_entrada`) VALUES (?,?,?,?,?,?,?)");
 			statement.setString(1, cliente.getNombre());
 			statement.setString(2, cliente.getApellido());
 			statement.setInt(3, cliente.getDni());
