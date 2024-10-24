@@ -111,7 +111,7 @@ System.out.println("No se agregó");		}
 			}
 		
 		} catch (Exception e) {
-			System.out.println("No se borró");		
+			System.out.println("No se actualizó");		
 		}
 		
 		

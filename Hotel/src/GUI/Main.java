@@ -7,6 +7,7 @@ import BLL.Hotel;
 import BLL.Hotel_Singleton;
 import BLL.JefeLimpieza;
 import BLL.Limpieza;
+import DLL.ControllerCliente;
 import DLL.ControllerReservaRecreacion;
 
 public class Main {
@@ -17,6 +18,9 @@ public static void main(String[] args) {
 	hotel.getEmpleados().add(new Empleado(0,1,"","",0,"a@a","1234"));
 	hotel.getEmpleados().add(new Empleado(0,2,"","",0,"b@b","1234"));
 	hotel.getEmpleados().add(new Empleado(0,3,"","",0,"c@c","1234"));
+	
+	JOptionPane.showMessageDialog(null, ControllerCliente.MostrarClientes());
+	
 	
 	ControllerReservaRecreacion.MostrarReservaRecreacion();
 	

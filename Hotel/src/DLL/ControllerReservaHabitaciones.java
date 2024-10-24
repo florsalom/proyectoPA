@@ -97,13 +97,15 @@ System.out.println("No se agregó");		}
 			statement.setInt(2, reservahabitaciones.getId_habitacion_fk());
 			statement.setDate(3, Date.valueOf(reservahabitaciones.getFecha_entrada()));
 			statement.setDate(4, Date.valueOf(reservahabitaciones.getFecha_salida()));
+
+			statement.setInt(5, reservahabitaciones.getId());
 			int filas = statement.executeUpdate();
 			if(filas>0) {
 				JOptionPane.showMessageDialog(null, "Se actualizó");
 			}
 		
 		} catch (Exception e) {
-			System.out.println("No se borró");		
+			System.out.println("No se actualizó");		
 		}
 		
 		

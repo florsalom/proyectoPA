@@ -60,26 +60,29 @@ public class Administracion extends Empleado implements Validaciones{
 		apellido=validarString("Ingrese apellido");
 	
 		do {
+			flag=true;
 			dni=validarNumero("Ingrese dni");
 			if (dni==0 || dni<1000000 || dni<0) {
 				JOptionPane.showMessageDialog(null, "El número de dni no es valido");
 				flag=false;
 			} 
-		} while (flag=false);
+		} while (flag==false);
 		do {
+			flag=true;
 			cantidad=validarNumero("Ingrese cantidad");
 			if (cantidad==0 || cantidad>8 || cantidad<0) {
 				JOptionPane.showMessageDialog(null, "La cantidad no es valida");
 				flag=false;
 			} 
-		} while (flag=false);
+		} while (flag==false);
 		do {
+			flag=true;
 			celular=validarNumero("ingrese celular");
 			if (celular==0 || celular<1100000000 || celular<0) {
 				JOptionPane.showMessageDialog(null, "El celular no es valido");
 				flag=false;
 			} 
-		} while (flag=false);
+		} while (flag==false);
 		
 	
 		
@@ -88,6 +91,7 @@ public class Administracion extends Empleado implements Validaciones{
 		
 	
 		LinkedList<Cliente> clientes =ControllerCliente.MostrarClientes();
+		JOptionPane.showMessageDialog(null, clientes);
 		for (Cliente cliente : clientes) {
 			if (dni==cliente.getDni()) {
 				flag=true;
@@ -96,7 +100,7 @@ public class Administracion extends Empleado implements Validaciones{
 				break;
 			}
 		}
-			if (flag=true) {
+			if (flag==true) {
 				ControllerCliente.agregarCliente(new Cliente(0,nombre,apellido,dni,cantidad,celular,fecha_entrada));
 				
 			}
@@ -108,16 +112,17 @@ public class Administracion extends Empleado implements Validaciones{
 			int i=0;
 			int id=0;
 			for (Habitacion habitacion : habitaciones) {
-				if (habitacion.getCant_huespedes()<=cantidad && habitacion.getEstado_limpieza()==1) {
+				if (habitacion.getCant_huespedes()>=cantidad && habitacion.getEstado_limpieza()==1) {
 					opciones[i] ="Id: "+habitacion.getId()+" Tipo: "+habitacion.getTipo_habitacion_fk()+" Cantidad disponible: "+habitacion.getCant_huespedes();
 					i++;
 				}
-			}
+			}		
 			
-			String habitacion_seleccionada=(String)JOptionPane.showInputDialog(null, "","", 0, null, opciones, opciones[0]);
+			String habitacion_seleccionada=(String)JOptionPane.showInputDialog(null, "Seleccione una habitacion","Seleccione una Habitacion", 0, null, opciones, opciones[0]);
 			try {
 				String[] habitacion_espacio=habitacion_seleccionada.split(" ");
 				id =Integer.parseInt(habitacion_espacio[1]);
+				JOptionPane.showMessageDialog(null, id);
 				
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, "Error");
@@ -125,17 +130,26 @@ public class Administracion extends Empleado implements Validaciones{
 			for (Habitacion habitacion : habitaciones) {
 				if (habitacion.getId()==id) {
 					elegida=habitacion;
+					break;
 				}
 			}
+
+			LinkedList<Cliente> clientes2 =ControllerCliente.MostrarClientes();
+			JOptionPane.showMessageDialog(null, clientes2);
 			Cliente reservando=null;
-			for (Cliente cliente : clientes) {
+			for (Cliente cliente : clientes2) {
 				if (dni==cliente.getDni()) {
 					reservando=cliente;
 					break;
 				}
 			}
-			ReservaHabitaciones reserva = new ReservaHabitaciones(reservando.getId(),elegida.getId(),reservando.getFecha_entrada());
-			ControllerReservaHabitaciones.agregarReservaHabitacion(reserva);
+			if (reservando!=null&&elegida!=null) {
+				ReservaHabitaciones reserva = new ReservaHabitaciones(reservando.getId(),elegida.getId(),reservando.getFecha_entrada());
+				ControllerReservaHabitaciones.agregarReservaHabitacion(reserva);
+				
+				JOptionPane.showMessageDialog(null, "Habitación asignada correctamente");
+			} 
+			
 			
 			
 			

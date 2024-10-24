@@ -93,11 +93,9 @@ System.out.println("No se agregó");		}
 					con.prepareStatement("UPDATE `habitaciones` SET `costoXdia`=?,`tipo`=? WHERE `id`=?");
 			statement.setInt(1, habitaciones.getCostoXdia());
 			statement.setString(2, habitaciones.getTipo());
-			int filas = statement.executeUpdate();
-			if(filas>0) {
-
+			
 			statement.setInt(3, habitaciones.getId());
-			}
+			
 
 			int fila = statement.executeUpdate();
 			if (fila>0) {
@@ -105,7 +103,7 @@ System.out.println("No se agregó");		}
 			}
 		
 		} catch (Exception e) {
-			System.out.println("No se borró");		
+			System.out.println("No se actualizó");		
 		}}}
 		
 		
