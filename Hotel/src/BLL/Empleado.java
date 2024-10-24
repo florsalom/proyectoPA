@@ -70,7 +70,7 @@ public class Empleado {
 	public void menu() {
 		
 	}
-	public static Empleado Login(String mail, String contrasena) {
+	public static Empleado login(String mail, String contrasena) {
 		Hotel hotel= Hotel_Singleton.getHotel();
 		Empleado a=null;
 		for (Empleado empleado : hotel.getEmpleados()) {
