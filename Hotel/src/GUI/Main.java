@@ -19,7 +19,6 @@ public static void main(String[] args) {
 	hotel.getEmpleados().add(new Empleado(0,2,"","",0,"b@b","1234"));
 	hotel.getEmpleados().add(new Empleado(0,3,"","",0,"c@c","1234"));
 	
-	JOptionPane.showMessageDialog(null, ControllerCliente.MostrarClientes());
 	
 	
 	ControllerReservaRecreacion.MostrarReservaRecreacion();

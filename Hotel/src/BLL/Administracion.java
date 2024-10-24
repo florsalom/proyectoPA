@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 
 import DLL.ControllerCliente;
 import DLL.ControllerHabitacion;
+import DLL.ControllerHabitaciones;
 import DLL.ControllerReservaHabitaciones;
 import repository.Validaciones;
 
@@ -19,8 +20,8 @@ public class Administracion extends Empleado implements Validaciones{
 	@Override
 	public void menu() {
 		int menu=6;
-		String [] opciones = {"Check-In","Check-out","Reservar Actividades","Buscar Cliente","Ver habitación","Salir"};
-		Cliente a = new Cliente();
+		String [] opciones = {"Check-In","Check-out","Reservar Actividades","Buscar Cliente","Ver habitación","Ver reservas de habitacion","Ver reservas de recreacion","Salir"};
+		
 		do {
 			menu=JOptionPane.showOptionDialog(null, "Que desea realizar hoy", null, 0, 0, null, opciones, opciones[0]);
 			switch (menu) {
@@ -29,7 +30,7 @@ public class Administracion extends Empleado implements Validaciones{
 				break;
 
 			case 1:
-				checkOut(a);
+				checkOut(buscar_Cliente());
 				break;
 			
 		case 2:
@@ -39,6 +40,14 @@ public class Administracion extends Empleado implements Validaciones{
 			buscar_Cliente();
 			break;
 		case 4:
+			ver_Habitacion();
+			break;
+		
+		case 5:
+			ver_Habitacion();
+			break;
+		
+		case 6:
 			ver_Habitacion();
 			break;
 		}
@@ -90,8 +99,7 @@ public class Administracion extends Empleado implements Validaciones{
 
 		
 	
-		LinkedList<Cliente> clientes =ControllerCliente.MostrarClientes();
-		JOptionPane.showMessageDialog(null, clientes);
+		LinkedList<Cliente> clientes =ControllerCliente.MostrarClientes2();
 		for (Cliente cliente : clientes) {
 			if (dni==cliente.getDni()) {
 				flag=true;
@@ -122,7 +130,6 @@ public class Administracion extends Empleado implements Validaciones{
 			try {
 				String[] habitacion_espacio=habitacion_seleccionada.split(" ");
 				id =Integer.parseInt(habitacion_espacio[1]);
-				JOptionPane.showMessageDialog(null, id);
 				
 			} catch (Exception e) {
 				JOptionPane.showMessageDialog(null, "Error");
@@ -134,8 +141,7 @@ public class Administracion extends Empleado implements Validaciones{
 				}
 			}
 
-			LinkedList<Cliente> clientes2 =ControllerCliente.MostrarClientes();
-			JOptionPane.showMessageDialog(null, clientes2);
+			LinkedList<Cliente> clientes2 =ControllerCliente.MostrarClientes2();
 			Cliente reservando=null;
 			for (Cliente cliente : clientes2) {
 				if (dni==cliente.getDni()) {
@@ -144,10 +150,10 @@ public class Administracion extends Empleado implements Validaciones{
 				}
 			}
 			if (reservando!=null&&elegida!=null) {
-				ReservaHabitaciones reserva = new ReservaHabitaciones(reservando.getId(),elegida.getId(),reservando.getFecha_entrada());
-				ControllerReservaHabitaciones.agregarReservaHabitacion(reserva);
-				
+				ControllerReservaHabitaciones.agregarReservaHabitacion(new ReservaHabitaciones(reservando.getId(),elegida.getId(),reservando.getFecha_entrada()));
 				JOptionPane.showMessageDialog(null, "Habitación asignada correctamente");
+				elegida.setCant_huespedes(elegida.getCant_huespedes()-1);
+				ControllerHabitacion.ActualizarHabitacion(elegida);
 			} 
 			
 			
@@ -159,10 +165,32 @@ public class Administracion extends Empleado implements Validaciones{
 		
 	}
 	public void checkOut(Cliente cliente) {
-		JOptionPane.showMessageDialog(null, "Check-Out");
+		
+	LinkedList<ReservaHabitaciones> reservas=	ControllerReservaHabitaciones.MostrarReservaHabitaciones();
+	LinkedList<Habitacion> habitaciones = ControllerHabitacion.MostrarHabitacion();
+		for (ReservaHabitaciones reservaHabitaciones : reservas) {
+			if (cliente.getId()==reservaHabitaciones.getId_cliente_fk()) {
+			 int id_habitacion=	reservaHabitaciones.getId_habitacion_fk();
+			 	for (Habitacion habitacion : habitaciones) {
+					if (habitacion.getId()==id_habitacion) {
+						habitacion.setEstado_limpieza(0);
+						habitacion.setCant_huespedes(habitacion.getCant_huespedes()+1);
+						ControllerHabitacion.ActualizarHabitacion(habitacion);
+						break;
+					}
+				}
+			 	break;
+			}
+		}
+		
+		
+		Factura factura= generar_factura();
+		
+		
+		
 	}
-	public String generar_factura() {
-		String factura="";
+	public Factura generar_factura() {
+		Factura factura=null;
 		JOptionPane.showMessageDialog(null, "Generar Factura");
 		return factura;
 	}
@@ -176,9 +204,12 @@ public class Administracion extends Empleado implements Validaciones{
 		JOptionPane.showMessageDialog(null, "Reservar Actividades");
 	}
 
-	public void buscar_Cliente(){
+	public Cliente buscar_Cliente(){
+		Cliente cliente=null;
 		JOptionPane.showMessageDialog(null, "Buscar Cliente");
+		return cliente;
 	}
+	
 	
 	
 	

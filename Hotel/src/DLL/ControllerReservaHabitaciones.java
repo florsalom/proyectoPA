@@ -16,11 +16,10 @@ public class ControllerReservaHabitaciones {
 		try {
 			
 			PreparedStatement statement = (PreparedStatement) 
-					con.prepareStatement("INSERT INTO `reserva_habitaciones`(`id_cliente_fk`, `id_habitacion_fk`, `fecha_entrada`, `fecha_salida`) VALUES (?,?,?,?)");
+					con.prepareStatement("INSERT INTO `reserva_habitaciones`(`id_cliente_fk`, `id_habitacion_fk`, `fecha_entrada`) VALUES (?,?,?)");
 			statement.setInt(1, reservahabitaciones.getId_cliente_fk());
 			statement.setInt(2, reservahabitaciones.getId_habitacion_fk());
 			statement.setDate(3, Date.valueOf(reservahabitaciones.getFecha_entrada()));
-			statement.setDate(4, Date.valueOf(reservahabitaciones.getFecha_salida()));
 			int filas = statement.executeUpdate();
 			if(filas>0) {
 				JOptionPane.showMessageDialog(null, "Se agregó");
