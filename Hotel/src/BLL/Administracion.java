@@ -73,7 +73,35 @@ public class Administracion extends Empleado implements Validaciones{
 		JOptionPane.showMessageDialog(null, lista);
 	}
 	public void ver_Habitacion() {
-		JOptionPane.showMessageDialog(null, "Ver habitación");
+		
+		LinkedList<Habitacion> habitaciones= ControllerHabitacion.MostrarHabitacion();
+		String [] opciones = new String[habitaciones.size()];
+		Habitacion elegida=null;
+		int i=0;
+		int id=0;
+		for (Habitacion habitacion : habitaciones) {
+			if (habitacion.getEstado_limpieza()==1) {
+				
+				opciones[i] ="Id: "+habitacion.getId()+" Tipo: "+habitacion.getTipo_habitacion_fk()+" Cantidad de huspedes: "+habitacion.getCant_huespedes();
+				i++;
+			}
+		}		
+		
+		String habitacion_seleccionada=(String)JOptionPane.showInputDialog(null, "Seleccione una habitacion","Seleccione una Habitacion", 0, null, opciones, opciones[0]);
+		try {
+			String[] habitacion_espacio=habitacion_seleccionada.split(" ");
+			id =Integer.parseInt(habitacion_espacio[1]);
+			
+		} catch (Exception e) {
+			JOptionPane.showMessageDialog(null, "Error");
+		}
+		for (Habitacion habitacion : habitaciones) {
+			if (habitacion.getId()==id) {
+				elegida=habitacion;
+				JOptionPane.showMessageDialog(null, " Tipo: "+habitacion.getTipo_habitacion_fk()+" Cantidad de huspedes: "+habitacion.getCant_huespedes());			
+				break;
+			}
+		}
 	}
 	public void checkIn() {
 		// creacion del cliente
