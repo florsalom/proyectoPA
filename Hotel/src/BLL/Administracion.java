@@ -9,6 +9,7 @@ import DLL.ControllerCliente;
 import DLL.ControllerHabitacion;
 import DLL.ControllerHabitaciones;
 import DLL.ControllerReservaHabitaciones;
+import DLL.ControllerReservaRecreacion;
 import repository.Validaciones;
 
 public class Administracion extends Empleado implements Validaciones{
@@ -44,15 +45,32 @@ public class Administracion extends Empleado implements Validaciones{
 			break;
 		
 		case 5:
-			ver_Habitacion();
+			ver_Reserva_Habitacion();
 			break;
 		
 		case 6:
-			ver_Habitacion();
+			ver_Reserva_Recreacion();
 			break;
 		}
 		} while (menu!=5);
 		
+	}
+	public void ver_Reserva_Recreacion() {
+		LinkedList<ReservaRecreacion> reservas=ControllerReservaRecreacion.MostrarReservaRecreacion();
+		String lista="";
+		for (int i = 0; i < reservas.size(); i++) {
+			lista=lista+"\n"+reservas.get(i);
+		}
+		JOptionPane.showMessageDialog(null, lista);
+		
+	}
+	public void ver_Reserva_Habitacion() {
+		LinkedList<ReservaHabitaciones> reservas=ControllerReservaHabitaciones.MostrarReservaHabitaciones();
+		String lista="";
+		for (int i = 0; i < reservas.size(); i++) {
+			lista=lista+"\n"+reservas.get(i);
+		}
+		JOptionPane.showMessageDialog(null, lista);
 	}
 	public void ver_Habitacion() {
 		JOptionPane.showMessageDialog(null, "Ver habitación");
