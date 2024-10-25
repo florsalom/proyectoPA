@@ -204,14 +204,68 @@ public class Administracion extends Empleado implements Validaciones{
 		
 		Factura factura= generar_factura();
 		
-		
-		
 	}
 	public Factura generar_factura() {
-		Factura factura=null;
-		JOptionPane.showMessageDialog(null, "Generar Factura");
-		return factura;
-	}
+		Cliente cliente = buscar_Cliente();
+		
+		if (cliente == null) {
+			JOptionPane.showMessageDialog(null, "No se encontró al cliente");
+			}
+		LinkedList<ReservaHabitaciones> reservas = ControllerReservaHabitaciones.MostrarReservaHabitaciones();
+		ReservaHabitaciones reservacliente = null;
+		
+		
+		
+		 for (ReservaHabitaciones reserva : reservas) {
+		        if (reserva.getId_cliente_fk() == cliente.getId()) {
+		            reservacliente = reserva;
+		        }
+		    }
+
+		    if (reservacliente == null) {
+		        JOptionPane.showMessageDialog(null, "El cliente no tiene reservas de habitación.");
+		        return null;
+		    }
+
+		    LinkedList<Habitacion> habitaciones = ControllerHabitacion.MostrarHabitacion();
+		    Habitacion habitacionCliente = null;
+
+		    for (Habitacion habitacion : habitaciones) {
+		        if (habitacion.getId() == reservacliente.getId_habitacion_fk()) {
+		            habitacionCliente = habitacion;
+		            break;
+		        }
+		    }
+
+		    if (habitacionCliente == null) {
+		        JOptionPane.showMessageDialog(null, "No se encontró la habitación.");
+		        return null;
+		    }
+
+		    int costoXhabitacion = habitacionCliente.getTipo_habitacion_fk();
+
+		    LinkedList<ReservaRecreacion> reservasRecreacion = ControllerReservaRecreacion.MostrarReservaRecreacion();
+		    int costoXrecreacion;
+		    int idReservaRecreacion;
+
+		    for (ReservaRecreacion reservaRec : reservasRecreacion) {
+		        if (reservaRec.getId_cliente_fk() == cliente.getId()) {
+			        //ayuda no se como hacer esto
+		        //costoXrecreacion + reservaRec.getId_recreacion_fk();
+		            idReservaRecreacion = reservaRec.getId();
+		        }
+		    }
+
+		    int costoTotal = costoXhabitacion + costoXrecreacion;
+		    double descuento = ingresar_descuento(costoTotal);
+		    double costoFinal = costoTotal - descuento;
+
+		    Factura factura = new Factura(
+		        0, cliente.getId(), habitacionCliente.getId(), reservacliente.getFecha_entrada(), LocalDate.now(), idReservaRecreacion, costoXhabitacion, costoXrecreacion, costoFinal, descuento);
+
+		    JOptionPane.showMessageDialog(null, "Se creó la factura:" + factura);
+		    return factura;
+		}
 
 	public int ingresar_descuento(int costo){
 		JOptionPane.showMessageDialog(null, "Ingresar Descuento");
