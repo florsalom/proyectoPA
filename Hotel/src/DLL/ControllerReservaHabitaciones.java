@@ -16,7 +16,7 @@ public class ControllerReservaHabitaciones {
 		try {
 			
 			PreparedStatement statement = (PreparedStatement) 
-					con.prepareStatement("INSERT INTO `reserva_habitaciones`(`id_cliente_fk`, `id_habitacion_fk`, `fecha_entrada`) VALUES (?,?,?)");
+					con.prepareStatement("INSERT INTO `reserva_habitacion`(`id_cliente_fk`, `id_habitacion_fk`, `fecha_entrada`) VALUES (?,?,?)");
 			statement.setInt(1, reservahabitaciones.getId_cliente_fk());
 			statement.setInt(2, reservahabitaciones.getId_habitacion_fk());
 			statement.setDate(3, Date.valueOf(reservahabitaciones.getFecha_entrada()));
@@ -36,11 +36,11 @@ System.out.println("No se agregó");		}
 		try {
 			
 			PreparedStatement statement = (PreparedStatement) 
-					con.prepareStatement("SELECT * FROM `reserva_habitaciones`");
+					con.prepareStatement("SELECT * FROM `reserva_habitacion`");
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				 
-				reservahabitaciones.add(new ReservaHabitaciones(resultSet.getInt("id"),resultSet.getInt("id_cliente_fk"),resultSet.getInt("id_habitacion_fk"),resultSet.getDate("fecha_entrada").toLocalDate(),resultSet.getDate("fecha_salida").toLocalDate()));
+				reservahabitaciones.add(new ReservaHabitaciones(resultSet.getInt("id"),resultSet.getInt("id_cliente_fk"),resultSet.getInt("id_habitacion_fk"),resultSet.getDate("fecha_entrada").toLocalDate()));
 			}
 			
 		} catch (Exception e) {
@@ -54,7 +54,26 @@ System.out.println("No se agregó");		}
 		try {
 			
 			PreparedStatement statement = (PreparedStatement) 
-					con.prepareStatement("SELECT * FROM `reserva_habitaciones` WHERE id= ? ");
+					con.prepareStatement("SELECT * FROM `reserva_habitacion` WHERE id= ? ");
+			statement.setInt(1, id);
+			ResultSet resultSet = statement.executeQuery();
+			if (resultSet.next()) {
+				nuevo = new ReservaHabitaciones(resultSet.getInt("id"),resultSet.getInt("id_cliente_fk"),resultSet.getInt("id_habitacion_fk"),resultSet.getDate("fecha_entrada").toLocalDate());
+			}
+		
+		} catch (Exception e) {
+			System.out.println("No se agregó");		
+		}
+		
+		
+		return nuevo;
+	}
+	public static ReservaHabitaciones BuscarReservaHabitaciones2(int id) {
+		ReservaHabitaciones nuevo = null;
+		try {
+			
+			PreparedStatement statement = (PreparedStatement) 
+					con.prepareStatement("SELECT * FROM `reserva_habitacion` WHERE id= ? ");
 			statement.setInt(1, id);
 			ResultSet resultSet = statement.executeQuery();
 			if (resultSet.next()) {
@@ -73,7 +92,7 @@ System.out.println("No se agregó");		}
 		try {
 			
 			PreparedStatement statement = (PreparedStatement) 
-					con.prepareStatement("DELETE FROM `reserva_habitaciones` WHERE id= ? ");
+					con.prepareStatement("DELETE FROM `reserva_habitacion` WHERE id= ? ");
 			statement.setInt(1, id);
 			int fila = statement.executeUpdate();
 			if (fila>0) {

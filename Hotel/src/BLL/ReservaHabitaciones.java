@@ -25,6 +25,14 @@ public class ReservaHabitaciones {
 		this.fecha_entrada = fecha_entrada;
 		this.fecha_salida = null;
 	}
+	public ReservaHabitaciones(int id,int id_cliente_fk, int id_habitacion_fk, LocalDate fecha_entrada) {
+		super();
+		this.id = id;
+		this.id_cliente_fk = id_cliente_fk;
+		this.id_habitacion_fk = id_habitacion_fk;
+		this.fecha_entrada = fecha_entrada;
+		this.fecha_salida = null;
+	}
 	public int getId() {
 		return id;
 	}

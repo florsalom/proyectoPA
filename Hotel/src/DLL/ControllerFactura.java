@@ -55,6 +55,24 @@ System.out.println("No se agregó");		}
 		
 		return factura;
 	}
+	public static LinkedList<Factura> MostrarFacturas2() {
+		 LinkedList<Factura> factura = new  LinkedList<Factura>();
+		try {
+			
+			PreparedStatement statement = (PreparedStatement) 
+					con.prepareStatement("SELECT * FROM `factura`");
+			ResultSet resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				 
+				factura.add(new Factura(resultSet.getInt("id"),resultSet.getInt("id_cliente_fk"), resultSet.getInt("id_habitacion_fk()"),resultSet.getDate("fecha_entrada").toLocalDate(),resultSet.getDate("fecha salida").toLocalDate(),resultSet.getInt("id_reserva_recreacion"),resultSet.getInt("costoXhabitacion"),resultSet.getInt("costoXrecreacion"), resultSet.getInt("costo_Final")));
+			}
+			
+		} catch (Exception e) {
+System.out.println("No se agregó");		}
+		
+		
+		return factura;
+	}
 	public static Factura BuscarFactura(int id) {
 		Factura nuevo = null;
 		try {

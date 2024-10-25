@@ -1,4 +1,6 @@
 package GUI;
+import java.time.LocalDate;
+
 import javax.swing.JOptionPane;
 
 import BLL.Administracion;
@@ -7,7 +9,12 @@ import BLL.Hotel;
 import BLL.Hotel_Singleton;
 import BLL.JefeLimpieza;
 import BLL.Limpieza;
+import BLL.ReservaHabitaciones;
 import DLL.ControllerCliente;
+import DLL.ControllerEmpleados;
+import DLL.ControllerFactura;
+import DLL.ControllerRecreacion;
+import DLL.ControllerReservaHabitaciones;
 import DLL.ControllerReservaRecreacion;
 
 public class Main {
@@ -18,13 +25,21 @@ public static void main(String[] args) {
 	hotel.getEmpleados().add(new Empleado(0,1,"","",0,"a@a","1234"));
 	hotel.getEmpleados().add(new Empleado(0,2,"","",0,"b@b","1234"));
 	hotel.getEmpleados().add(new Empleado(0,3,"","",0,"c@c","1234"));
-	
-	
-	
-	ControllerReservaRecreacion.MostrarReservaRecreacion();
+	  hotel.setEmpleados(ControllerEmpleados.MostrarEmpleados());	
+
+	  hotel.setClientes(ControllerCliente.MostrarClientes());
+
+	  hotel.setRecreaciones(ControllerRecreacion.MostrarRecreacion());
+
+	  hotel.setReservas_habitacion(ControllerReservaHabitaciones.MostrarReservaHabitaciones());
+
+	  hotel.setFacturas(ControllerFactura.MostrarFacturas());
+
+	  hotel.setReservas_recreacion(ControllerReservaRecreacion.MostrarReservaRecreacion());
 	
 	//listaEmpleados.getInstance();
-
+	  
+	  
 	String[] opcionEmpleado = {"Iniciar sesión",
 			//"Registrarse",
 			"Salir"};

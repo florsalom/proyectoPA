@@ -107,7 +107,7 @@ System.out.println("No se agregó");		}
 		
 		
 	}
-	public static void ActualizarEmpleado(Cliente cliente) {
+	public static void ActualizarCliente(Cliente cliente) {
 		
 		try {
 			
