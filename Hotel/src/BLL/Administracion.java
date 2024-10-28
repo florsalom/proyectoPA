@@ -72,6 +72,7 @@ public class Administracion extends Empleado implements Validaciones{
 		}
 		JOptionPane.showMessageDialog(null, lista);
 	}
+	
 	public void ver_Habitacion() {
 		
 		LinkedList<Habitacion> habitaciones= ControllerHabitacion.MostrarHabitacion();

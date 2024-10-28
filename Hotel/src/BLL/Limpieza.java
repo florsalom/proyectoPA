@@ -1,7 +1,11 @@
 package BLL;
 
 
+import java.util.LinkedList;
+
 import javax.swing.JOptionPane;
+
+import DLL.ControllerHabitacion;
 
 public class Limpieza extends Empleado{
 
@@ -25,7 +29,45 @@ public class Limpieza extends Empleado{
 		}
 		} while (menu!=1);
 	}
+	
+	
 	public void ver_Trabajo() {
-		JOptionPane.showMessageDialog(null, "Ver Trabajo");
+	    LinkedList<Habitacion> habitaciones = ControllerHabitacion.MostrarHabitacion();
+	    String[] opciones = new String[habitaciones.size()];
+	    Habitacion elegida = null;
+	    int i = 0;
+	    int id = 0;
+
+	    boolean trabajoD = false;
+
+	    for (Habitacion habitacion : habitaciones) {
+	        if (habitacion.getEstado_limpieza() == 0) {
+	            opciones[i] = "Id: " + habitacion.getId() + " Tipo: " + habitacion.getTipo_habitacion_fk() + " Cantidad de huspedes: " + habitacion.getCant_huespedes();
+	            i++;
+	            trabajoD = true;
+	        }
+	    }
+
+	    if (!trabajoD) {
+	        JOptionPane.showMessageDialog(null, "No hay trabajo disponible");
+	        return; 
+	    }
+
+	    String habitacion_seleccionada = (String) JOptionPane.showInputDialog(null, "Seleccione una habitación", "Seleccione una Habitación", 0, null, opciones, opciones[0]);
+	    
+	    try {
+	        String[] habitacion_espacio = habitacion_seleccionada.split(" ");
+	        id = Integer.parseInt(habitacion_espacio[1]);
+	    } catch (Exception e) {
+	        JOptionPane.showMessageDialog(null, "Error");
+	    }
+
+	    for (Habitacion habitacion : habitaciones) {
+	        if (habitacion.getId() == id) {
+	            elegida = habitacion;
+	            JOptionPane.showMessageDialog(null, "Tipo: " + habitacion.getTipo_habitacion_fk() + " Cantidad de huspedes: " + habitacion.getCant_huespedes());
+	            break;
+	        }
+	    }
 	}
 }
