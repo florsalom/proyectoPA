@@ -46,7 +46,7 @@ public static void main(String[] args) {
 	int menu =0 ;
 	do {
 		
-	menu= JOptionPane.showOptionDialog(null, "Que desea realizar hoy", null, 0, 0, null, opcionEmpleado, opcionEmpleado[0]);
+	menu= JOptionPane.showOptionDialog(null, "¿Qué desea realizar hoy?", null, 0, 0, null, opcionEmpleado, opcionEmpleado[0]);
 	switch (menu) {
 	case 0:
 		String mail = JOptionPane.showInputDialog("Ingrese mail");
