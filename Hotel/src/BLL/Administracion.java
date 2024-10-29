@@ -246,10 +246,6 @@ public class Administracion extends Empleado implements Validaciones{
 			} 		
 	}
 	public void checkOut(Cliente cliente) {
-	    if (cliente.getFecha_entrada() == null) {
-	        JOptionPane.showMessageDialog(null, "Fecha de entrada no válida.");
-	        return;
-	    }
 
 	    LocalDate fecha_salida = LocalDate.now();
 	    cliente.setFecha_salida(fecha_salida);
@@ -275,6 +271,7 @@ public class Administracion extends Empleado implements Validaciones{
 	            }
 	            break;
 	        }
+	        generar_factura(cliente);
 	    }
 	}
 	public Factura generar_factura(Cliente cliente) {
@@ -353,7 +350,7 @@ public class Administracion extends Empleado implements Validaciones{
 		             inicio=reservaRec.getInicio();
 		             fin=reservaRec.getFin();
 		            break;
-		        }
+		        }}
 		        
 		        if (inicio != null && fin != null) {
 		            long horas = Duration.between(inicio, fin).toHours();
@@ -379,14 +376,14 @@ public class Administracion extends Empleado implements Validaciones{
 		    int menu;
 		    String [] opciones = {"No","Sí"}; 
 		    
-		    menu=JOptionPane.showOptionDialog(null, "¿Desea ingresar un descuento?", null, 0, 0, null, opciones, opciones[0]);
+		  //  menu=JOptionPane.showOptionDialog(null, "¿Desea ingresar un descuento?", null, 0, 0, null, opciones, opciones[0]);
 		    
-		    if (menu==1) {
-		    	int descuento = ingresar_descuento(costo_Final);
+		  //  if (menu==1) {
+		   // 	int descuento = ingresar_descuento(costo_Final);
 			    
 			    
-			    costo_Final = costo_Final - descuento;
-			}
+		//	    costo_Final = costo_Final - descuento;
+			//}
 		    
 
 		    Factura factura = new Factura(
@@ -397,9 +394,9 @@ public class Administracion extends Empleado implements Validaciones{
 		    JOptionPane.showMessageDialog(null, "Se creó la factura:" + factura);
 
 		
-			return factura;}
+			return factura;
 
-		    return null;
+		   // return null;
 	}
 	public int ingresar_descuento(int costo){
 		JOptionPane.showMessageDialog(null, "Ingresar Descuento");
