@@ -1,5 +1,7 @@
 package BLL;
 
+import DLL.ControllerEmpleados;
+
 public class Empleado {
 
 	private int id;
@@ -72,6 +74,7 @@ public class Empleado {
 	}
 	public static Empleado Login(String mail, String contrasena) {
 		Hotel hotel= Hotel_Singleton.getHotel();
+		 hotel.setEmpleados(ControllerEmpleados.MostrarEmpleados());	
 		Empleado a=null;
 		for (Empleado empleado : hotel.getEmpleados()) {
 			if (mail.equals(empleado.getMail())&&contrasena.equals(empleado.getContrasena())) {
