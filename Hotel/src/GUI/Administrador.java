@@ -1,5 +1,6 @@
 package GUI;
 
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -35,32 +36,32 @@ public class Administrador extends JFrame{
 			}
 		}
 		);
-		btnCheckin.setBounds(26, 215, 100, 23);
+		btnCheckin.setBounds(26, 70, 120, 23);
 		contentPane.add(btnCheckin);
 		
 		JButton btnCheckout = new JButton("Check-Out");
 		btnCheckout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Checkout pantallaCheckout = new Checkout();
+				Checkout pantallaCheckout = new Checkout(administrador);
 				pantallaCheckout.setVisible(true);
 				dispose();
 			}
 		}
 		);
-		btnCheckout.setBounds(26, 100, 100, 23);
+		btnCheckout.setBounds(26, 130, 120, 23);
 		contentPane.add(btnCheckout);
 		
 		
 		JButton btnRactividades = new JButton("Reservar Actividades");
 		btnRactividades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Actividades pantallaRactividades = new Actividades();
+				Actividades pantallaRactividades = new Actividades(administrador);
 				pantallaRactividades.setVisible(true);
 				dispose();
 			}
 		}
 		);
-		btnRactividades.setBounds(26, 150, 100, 23);
+		btnRactividades.setBounds(180, 100, 200, 23);
 		contentPane.add(btnRactividades);
 		
 		
@@ -71,18 +72,18 @@ public class Administrador extends JFrame{
 			}
 		}
 		);
-		btnBucarCliente.setBounds(26, 70, 100, 23);
+		btnBucarCliente.setBounds(26, 160, 120, 23);
 		contentPane.add(btnBucarCliente);
 		
 		
 		JButton btnVhabitacion = new JButton("Ver Habitación");
-		btnCheckin.addActionListener(new ActionListener() {
+		btnVhabitacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				administrador.ver_Habitacion();
 			}
 		}
 		);
-		btnVhabitacion.setBounds(26, 175, 100, 23);
+		btnVhabitacion.setBounds(180, 70, 200, 23);
 		contentPane.add(btnVhabitacion);
 		
 		
@@ -93,7 +94,7 @@ public class Administrador extends JFrame{
 			}
 		}
 		);
-		btnVRhabitacion.setBounds(26, 230, 100, 23);
+		btnVRhabitacion.setBounds(180, 160, 200, 23);
 		contentPane.add(btnVRhabitacion);
 		
 		
@@ -104,7 +105,7 @@ public class Administrador extends JFrame{
 			}
 		}
 		);
-		btnVRrecreacion.setBounds(26, 250, 100, 23);
+		btnVRrecreacion.setBounds(180, 130, 200, 23);
 		contentPane.add(btnVRrecreacion);
 		
 		
@@ -115,11 +116,14 @@ public class Administrador extends JFrame{
 			}
 		}
 		);
-		btnVfactura.setBounds(26, 275, 100, 23);
+		btnVfactura.setBounds(26, 100, 120, 23);
 		contentPane.add(btnVfactura);
 		
 		JLabel usuario = new JLabel("Bienvenido " + administrador.getNombre());
-		usuario.setBounds(100, 46, 300, 14);
+		usuario.setBounds(26, 30, 300, 30);
 		contentPane.add(usuario);
+		
+		usuario.setFont(new Font("Ubuntu Medium", Font.BOLD, 20));
+		
 }
 }

@@ -87,7 +87,7 @@ public class PantallaLogin extends JFrame{
 				} else {
 					lblerror.setVisible(false);
 					Empleado encontrado = Empleado.Login(inpMail.getText(), pswPass.getText()) ;
-
+					
 					if(encontrado!=null) {
 						if (encontrado.getCargo()==1) {
 							Administracion nuevo = new Administracion(encontrado.getId(),encontrado.getCargo(),encontrado.getNombre(),encontrado.getApellido(),encontrado.getDni(),encontrado.getMail(),encontrado.getContrasena());
