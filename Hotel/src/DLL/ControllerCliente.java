@@ -52,6 +52,24 @@ System.out.println("No se agregó");		}
 		
 		return cliente;
 	}
+	public static LinkedList<Cliente> MostrarClientes2() {
+		 LinkedList<Cliente> cliente = new  LinkedList<Cliente>();
+		try {
+			
+			PreparedStatement statement = (PreparedStatement) 
+					con.prepareStatement("SELECT * FROM `cliente`");
+			ResultSet resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				 
+				cliente.add(new Cliente(resultSet.getInt("id"),resultSet.getString("nombre"), resultSet.getString("apellido"),resultSet.getInt("dni"),resultSet.getInt("cantidad"),resultSet.getInt("celular"),resultSet.getDate("fecha_entrada").toLocalDate()));
+			}
+			
+		} catch (Exception e) {
+System.out.println("No se agregó");		}
+		
+		
+		return cliente;
+	}
 	public static Cliente BuscarCliente(int id) {
 		Cliente nuevo = null;
 		try {
@@ -89,7 +107,7 @@ System.out.println("No se agregó");		}
 		
 		
 	}
-	public static void ActualizarEmpleado(Cliente cliente) {
+	public static void ActualizarCliente(Cliente cliente) {
 		
 		try {
 			
@@ -111,7 +129,7 @@ System.out.println("No se agregó");		}
 			}
 		
 		} catch (Exception e) {
-			System.out.println("No se borró");		
+			System.out.println("No se actualizó");		
 		}
 		
 		

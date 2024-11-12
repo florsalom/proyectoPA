@@ -10,7 +10,7 @@ public interface Validaciones {
 			variable=JOptionPane.showInputDialog(mensaje);
 			
 			if (variable.isEmpty()) {
-				JOptionPane.showMessageDialog(null, "No puede estar vacia");
+				JOptionPane.showMessageDialog(null, "No puede estar vacía.");
 				flag=false;
 			}
 		} while (flag==false);
@@ -25,7 +25,7 @@ public interface Validaciones {
 				flag=true;
 				variable=Integer.parseInt(JOptionPane.showInputDialog(mensaje));
 			} catch (Exception e) {
-				JOptionPane.showMessageDialog(null, "Tiene que ser un numero");
+				JOptionPane.showMessageDialog(null, "Tiene que ser un numero.");
 				flag=false;
 			}
 		} while (flag==false);

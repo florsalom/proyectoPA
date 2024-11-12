@@ -109,7 +109,7 @@ public static void EliminarEmpleado(int id) {
 				JOptionPane.showMessageDialog(null, "Se actualizó");
 			}
 		} catch (Exception e) {
-			System.out.println("No se borró");		
+			System.out.println("No se actualizó");		
 		}
 
 

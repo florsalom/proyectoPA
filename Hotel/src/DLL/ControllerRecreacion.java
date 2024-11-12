@@ -96,13 +96,15 @@ System.out.println("No se agregó");		}
 			statement.setString(2, recreacion.getTipo());
 			statement.setInt(3, recreacion.getCapacidad());
 
+			statement.setInt(4, recreacion.getId());
+
 			int fila = statement.executeUpdate();
 			if (fila>0) {
 				JOptionPane.showMessageDialog(null, "Se actualizó");
 			}
 		
 		} catch (Exception e) {
-			System.out.println("No se borró");		
+			System.out.println("No se actualizó");		
 		}
 		
 		

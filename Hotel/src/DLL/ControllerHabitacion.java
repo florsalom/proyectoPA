@@ -93,6 +93,8 @@ System.out.println("No se agregó");		}
 			statement.setInt(1, habitacion.getTipo_habitacion_fk());
 			statement.setInt(2, habitacion.getCant_huespedes());
 			statement.setInt(3, habitacion.getEstado_limpieza());
+			
+			statement.setInt(4, habitacion.getId());
 	
 			int filas = statement.executeUpdate();
 			if(filas>0) {
@@ -100,7 +102,7 @@ System.out.println("No se agregó");		}
 			}
 		
 		} catch (Exception e) {
-			System.out.println("No se borró");		
+			System.out.println("No se actualizó");		
 		}
 		
 		

@@ -101,13 +101,15 @@ System.out.println("No se agregó");		}
 			statement.setInt(2, reservarecreacion.getId_recreacion_fk());
 			statement.setTimestamp(3, Timestamp.valueOf(reservarecreacion.getInicio()));
 			statement.setTimestamp(4, Timestamp.valueOf(reservarecreacion.getFin()));
+			
+			statement.setInt(5, reservarecreacion.getId());
 			int filas = statement.executeUpdate();
 			if(filas>0) {
 				JOptionPane.showMessageDialog(null, "Se actualizó");
 			}
 		
 		} catch (Exception e) {
-			System.out.println("No se borró");		
+			System.out.println("No se actualizó");		
 		}
 		
 		

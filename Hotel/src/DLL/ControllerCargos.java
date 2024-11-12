@@ -90,8 +90,9 @@ System.out.println("No se agregó");		}
 			
 			PreparedStatement statement = (PreparedStatement) 
 					con.prepareStatement("UPDATE `cargos` SET `cargo`=? WHERE `id`=?");
-			statement.setInt(1, cargo.getId());
-			statement.setString(2, cargo.getCargo());
+			
+			statement.setString(1, cargo.getCargo());
+			statement.setInt(2, cargo.getId());
 
 			int fila = statement.executeUpdate();
 			if (fila>0) {
@@ -99,7 +100,7 @@ System.out.println("No se agregó");		}
 			}
 		
 		} catch (Exception e) {
-			System.out.println("No se borró");		
+			System.out.println("No se actualizó");		
 		}
 		
 		
