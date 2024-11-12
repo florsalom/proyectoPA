@@ -21,46 +21,46 @@ public class Administracion extends Empleado implements Validaciones{
 		super(id, cargo, nombre, apellido, dni, mail, contrasena);
 		
 	}
-	@Override
-	public void menu() {
-		int menu=6;
-		String [] opciones = {"Check-In","Check-out","Reservar Actividades","Buscar Cliente","Ver habitación","Ver reservas de habitacion","Ver reservas de recreacion","Ver facturas","Salir"};
-		
-		do {
-			menu=JOptionPane.showOptionDialog(null, "¿Qué desea realizar hoy?", null, 0, 0, null, opciones, opciones[0]);
-			switch (menu) {
-			case 0:
-				checkIn();
-				break;
-
-			case 1:
-				checkOut(buscar_Cliente());
-				break;
-			
-		case 2:
-			reservar_Actividades();
-			break;
-		case 3:
-			buscar_Cliente();
-			break;
-		case 4:
-			ver_Habitacion();
-			break;
-		
-		case 5:
-			ver_Reserva_Habitacion();
-			break;
-		
-		case 6:
-			ver_Reserva_Recreacion();
-			break;
-		case 7:
-			ver_Factura();
-			break;
-		}
-		} while (menu!=8);
-		
-	}
+	//@Override
+//	public void menu() {
+//		int menu=6;
+//		String [] opciones = {"Check-In","Check-out","Reservar Actividades","Buscar Cliente","Ver habitación","Ver reservas de habitacion","Ver reservas de recreacion","Ver facturas","Salir"};
+//		
+//		do {
+//			menu=JOptionPane.showOptionDialog(null, "¿Qué desea realizar hoy?", null, 0, 0, null, opciones, opciones[0]);
+//			switch (menu) {
+//			case 0:
+//				checkIn();
+//				break;
+//
+//			case 1:
+//				checkOut(buscar_Cliente());
+//				break;
+//			
+//		case 2:
+//			reservar_Actividades();
+//			break;
+//		case 3:
+//			buscar_Cliente();
+//			break;
+//		case 4:
+//			ver_Habitacion();
+//			break;
+//		
+//		case 5:
+//			ver_Reserva_Habitacion();
+//			break;
+//		
+//		case 6:
+//			ver_Reserva_Recreacion();
+//			break;
+//		case 7:
+//			ver_Factura();
+//			break;
+//		}
+//		} while (menu!=8);
+//		
+//	}
 	public void ver_Factura() {
 		
 		LinkedList<Factura> reservas=ControllerFactura.MostrarFacturas();
@@ -146,61 +146,55 @@ public class Administracion extends Empleado implements Validaciones{
 			}
 		}	
 	}
-	public void checkIn() {
+	public String checkIn(String nombre, String apellido, String dni, String cantidad, String celular) {
 		// creacion del cliente
 		boolean flag=true;
-		String nombre, apellido;
-		int dni=0, cantidad=0, celular=0;
+		
 		LocalDate fecha_entrada= LocalDate.now();
 		
-		nombre=validarString("Ingrese nombre");
-	
-		apellido=validarString("Ingrese apellido");
-	
-		do {
-			flag=true;
-			dni=validarNumero("Ingrese DNI");
-			if (dni==0 || dni<1000000 || dni<0) {
-				JOptionPane.showMessageDialog(null, "El número de DNI no es válido.");
-				flag=false;
-			} 
-		} while (flag==false);
-		do {
-			flag=true;
-			cantidad=validarNumero("Ingrese cantidad de húespedes.");
-			if (cantidad==0 || cantidad>8 || cantidad<0) {
-				JOptionPane.showMessageDialog(null, "La cantidad no es válida.");
-				flag=false;
-			} 
-		} while (flag==false);
-		do {
-			flag=true;
-			celular=validarNumero("Ingrese celular");
-			if (celular==0 || celular<1100000000 || celular<0) {
-				JOptionPane.showMessageDialog(null, "El número no es válido.");
-				flag=false;
-			} 
-		} while (flag==false);
+		if (nombre.isEmpty() ||  apellido.isEmpty() || dni.isEmpty() || cantidad.isEmpty() || celular.isEmpty()) {
+			
+			return "No pueden estar vacios";
+		}
 		
+		try {
+			if (Integer.parseInt(dni)==0 || Integer.parseInt(dni)<10000000 || Integer.parseInt(dni)<0) {
+				return "El número de dni no es valido";
+			}
+		} catch (Exception e) {
+			return "El DNI debe ser un número";
+		}
 	
-		
-	
+		try {
+			if (Integer.parseInt(cantidad)==0 || Integer.parseInt(cantidad)>8 || Integer.parseInt(cantidad)<0) {
+				return "La cantidad de huespedes dno es valida";
+			}
+		} catch (Exception e) {
+			return "La cantidad de huespedes debe ser un número";
+		}
+		try {
+			if (Integer.parseInt(celular)==0 || Integer.parseInt(celular)<1100000000 || Integer.parseInt(celular)<0) {
+				return "El numero de celular no es valido";
+			}
+		} catch (Exception e) {
+			return "El número de celular debe ser un número";
+		}
 
-		
 	
 		LinkedList<Cliente> clientes =ControllerCliente.MostrarClientes2();
 		for (Cliente cliente : clientes) {
-			if (dni==cliente.getDni()) {
-				flag=true;
-				JOptionPane.showMessageDialog(null, "Ya existe un cliente con este DNI: " + dni);
-				flag=false;
-				break;
+			if (Integer.parseInt(dni)==cliente.getDni()) {
+				return "Ya existe un cliente con ese DNI";
 			}
 		}
-			if (flag==true) {
-				ControllerCliente.agregarCliente(new Cliente(0,nombre,apellido,dni,cantidad,celular,fecha_entrada));
+			
 				
-			}
+		ControllerCliente.agregarCliente(new Cliente(0,nombre,apellido,Integer.parseInt(dni),Integer.parseInt(cantidad),Integer.parseInt(celular),fecha_entrada));
+				
+			
+			
+			
+			
 			// asignacion de habitacion
 			
 			LinkedList<Habitacion> habitaciones= ControllerHabitacion.MostrarHabitacion();
@@ -209,7 +203,7 @@ public class Administracion extends Empleado implements Validaciones{
 			int i=0;
 			int id=0;
 			for (Habitacion habitacion : habitaciones) {
-				if (habitacion.getCant_huespedes()>=cantidad && habitacion.getEstado_limpieza()==1) {
+				if (habitacion.getCant_huespedes()>=Integer.parseInt(cantidad) && habitacion.getEstado_limpieza()==1) {
 					opciones[i] ="Id: "+habitacion.getId()+" Tipo: " + habitacion.getTipo_habitacion_fk() + " Cantidad disponible: "+habitacion.getCant_huespedes();
 					i++;
 				}
@@ -233,7 +227,7 @@ public class Administracion extends Empleado implements Validaciones{
 			LinkedList<Cliente> clientes2 =ControllerCliente.MostrarClientes2();
 			Cliente reservando=null;
 			for (Cliente cliente : clientes2) {
-				if (dni==cliente.getDni()) {
+				if (Integer.parseInt(dni)==cliente.getDni()) {
 					reservando=cliente;
 					break;
 				}
@@ -243,7 +237,9 @@ public class Administracion extends Empleado implements Validaciones{
 				JOptionPane.showMessageDialog(null, "Habitación asignada correctamente");
 				elegida.setCant_huespedes(elegida.getCant_huespedes()-1);
 				ControllerHabitacion.ActualizarHabitacion(elegida);
+				return "Reserva creada correctamente";
 			} 		
+			return "Hubo un error";
 	}
 	public void checkOut(Cliente cliente) {
 

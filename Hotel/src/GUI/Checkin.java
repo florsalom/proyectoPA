@@ -77,35 +77,24 @@ public class Checkin extends JFrame{
 		contentPane.add(cantidad);
 		
 		JLabel lblcelular = new JLabel("Celular:");
-		lblcelular.setBounds(290, 137, 91, 14);
+		lblcelular.setBounds(271, 137, 91, 14);
 		contentPane.add(lblcelular);
 		
 		celular = new JTextField();
-		celular.setBounds(290, 166, 86, 20);
+		celular.setBounds(271, 166, 86, 20);
 		contentPane.add(celular);
 		
 		JLabel lblerror = new JLabel("");
 		lblerror.setForeground(new Color(255, 0, 0));
-		lblerror.setBounds(263, 220, 210, 14);
+		lblerror.setBounds(253, 220, 210, 14);
 		contentPane.add(lblerror);
 		JButton btnEnviar = new JButton("Check-in");
 		btnEnviar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				String label=administrador.checkIn(nombre.getText(), apellido.getText(), dni.getText(), cantidad.getText(), celular.getText());	
 				
-				if (nombre.getText().isEmpty() || cantidad.getText().isEmpty()|| dni.getText().isEmpty() || celular.getText().isEmpty() || apellido.getText().isEmpty()) {
-					lblerror.setText("Algo esta incorrecto o vacío.");
-				} else {
-					
-
-					
-				
-				
-				
-				
-				
-				
-				}
+				lblerror.setText(label);
 			
 
 				}

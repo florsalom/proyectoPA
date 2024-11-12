@@ -16,23 +16,23 @@ public class JefeLimpieza extends Empleado {
 			String contrasena) {
 		super(id, cargo, nombre, apellido, dni, mail, contrasena);
 	}
-	@Override
-	public void menu() {
-		int menu=5;
-		String [] opciones = {"Asignar Trabajo","Ver habitación","Salir"};
-		do {
-			menu=JOptionPane.showOptionDialog(null, "Que desea realizar hoy", null, 0, 0, null, opciones, opciones[0]);
-			switch (menu) {
-			case 0:
-				asignar_Trabajo();
-				break;
-			case 1:
-				ver_Habitacion();
-				break;
-
-		}
-		} while (menu!=2);
-	}
+//	@Override
+//	public void menu() {
+//		int menu=5;
+//		String [] opciones = {"Asignar Trabajo","Ver habitación","Salir"};
+//		do {
+//			menu=JOptionPane.showOptionDialog(null, "Que desea realizar hoy", null, 0, 0, null, opciones, opciones[0]);
+//			switch (menu) {
+//			case 0:
+//				asignar_Trabajo();
+//				break;
+//			case 1:
+//				ver_Habitacion();
+//				break;
+//
+//		}
+//		} while (menu!=2);
+//	}
 	 public void asignar_Trabajo() {
 
 			LinkedList<Empleado> empleados= ControllerEmpleados.MostrarEmpleados();

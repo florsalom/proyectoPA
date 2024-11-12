@@ -1,5 +1,10 @@
 package GUI;
 
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,12 +25,49 @@ public class Jefe extends JFrame{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(41, 0, 289, 250);
-		contentPane.add(lblNewLabel);
 		
-		JLabel usuario = new JLabel("Bienvenido" + jefeLimpieza.getNombre());
-		usuario.setBounds(302, 46, 46, 14);
+		JButton btnCheckin = new JButton("Asignar Trabajo");
+		btnCheckin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				jefeLimpieza.asignar_Trabajo();
+			}
+		}
+		);
+		btnCheckin.setBounds(26, 70, 200, 23);
+		contentPane.add(btnCheckin);
+		
+		JButton btnCheckout = new JButton("Ver habitacion");
+		btnCheckout.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				jefeLimpieza.ver_Habitacion();
+			}
+		}
+		);
+		btnCheckout.setBounds(26, 130, 200, 23);
+		contentPane.add(btnCheckout);
+		
+		
+		JButton Salir = new JButton("Salir");
+		Salir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PantallaLogin pantalla= new PantallaLogin();
+				pantalla.setVisible(true);
+				
+				dispose();
+			}
+		}
+		);
+		Salir.setBounds(26, 220, 120, 23);
+		contentPane.add(Salir);
+		
+		
+		
+		
+		JLabel usuario = new JLabel("Bienvenido " + jefeLimpieza.getNombre());
+		usuario.setBounds(26, 30, 300, 30);
 		contentPane.add(usuario);
+		
+		usuario.setFont(new Font("Ubuntu Medium", Font.BOLD, 20));
+		
 }
 }

@@ -119,6 +119,18 @@ public class Administrador extends JFrame{
 		btnVfactura.setBounds(26, 100, 120, 23);
 		contentPane.add(btnVfactura);
 		
+		JButton Salir = new JButton("Salir");
+		Salir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				PantallaLogin pantalla= new PantallaLogin();
+				pantalla.setVisible(true);
+				dispose();
+			}
+		}
+		);
+		Salir.setBounds(26, 220, 120, 23);
+		contentPane.add(Salir);
+		
 		JLabel usuario = new JLabel("Bienvenido " + administrador.getNombre());
 		usuario.setBounds(26, 30, 300, 30);
 		contentPane.add(usuario);
