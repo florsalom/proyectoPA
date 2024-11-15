@@ -14,6 +14,13 @@ public class Habitacion {
         this.cant_huespedes = cant_huespedes;
         this.estado_limpieza = estado_limpieza;
     }
+    public Habitacion() {
+        super();
+        this.id = 0;
+        this.tipo_habitacion_fk = 0;
+        this.cant_huespedes = 0;
+        this.estado_limpieza = 0;
+    }
     
     public int getId() {
         return id;

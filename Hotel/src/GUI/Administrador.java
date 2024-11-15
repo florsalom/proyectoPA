@@ -79,7 +79,9 @@ public class Administrador extends JFrame{
 		JButton btnVhabitacion = new JButton("Ver Habitación");
 		btnVhabitacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				administrador.ver_Habitacion();
+				Ver_habitacion pantallaHabtacion = new Ver_habitacion(administrador);
+				pantallaHabtacion.setVisible(true);
+				dispose();
 			}
 		}
 		);
