@@ -19,14 +19,17 @@ public class ControllerFactura {
 			PreparedStatement statement = (PreparedStatement) 
 					
 					con.prepareStatement ("INSERT INTO `factura`(`id_cliente_fk`, `id_habitacion_fk`, `fecha_entrada`, `fecha_salida`, `id_reserva_recreacion_fk`, `costoXhabitacion`, `costoXrecreacion`, `costo_Final`) VALUES (?,?,?,?,?,?,?,?)");
+			
+			
+			JOptionPane.showMessageDialog(null, factura);
 			statement.setInt(1, factura.getId_cliente_fk());
 			statement.setInt(2, factura.getId_habitacion_fk());
 			statement.setDate(3, Date.valueOf(factura.getFecha_entrada()));
 			statement.setDate(4, Date.valueOf(factura.getFecha_salida()));
 			statement.setInt(5, factura.getid_reserva_recreacion_fk());
-			statement.setDouble(6, factura.getCostoXhabitacion());
-			statement.setDouble(7, factura.getCostoXrecreacion());
-			statement.setDouble(8, factura.getCosto_Final());
+			statement.setInt(6, factura.getCostoXhabitacion());
+			statement.setInt(7, factura.getCostoXrecreacion());
+			statement.setInt(8, (int)factura.getCosto_Final());
 			System.out.println("Insertando factura con valores:");
 			System.out.println("ID Cliente FK: " + factura.getId_cliente_fk());
 			System.out.println("ID Habitación FK: " + factura.getId_habitacion_fk());
@@ -35,7 +38,7 @@ public class ControllerFactura {
 			System.out.println("ID Reserva Recreación FK: " + factura.getid_reserva_recreacion_fk());
 			System.out.println("Costo por Habitación: " + factura.getCostoXhabitacion());
 			System.out.println("Costo por Recreación: " + factura.getCostoXrecreacion());
-			System.out.println("Costo Final: " + factura.getCosto_Final());
+			System.out.println("Costo Final: " + (int)factura.getCosto_Final());
 			int filas = statement.executeUpdate();
 			if(filas>0) {
 				JOptionPane.showMessageDialog(null, "Se agregó");

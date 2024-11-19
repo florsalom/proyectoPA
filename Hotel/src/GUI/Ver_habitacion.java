@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
@@ -87,9 +88,16 @@ public class Ver_habitacion extends JFrame{
 	     filtro.setVisible(true);
 	     //Hacer que esto sea un optionmessage
 	     
+	     JComboBox comboBox = new JComboBox();
+			comboBox.setBounds(200, 250, 135, 22);
+			contentPane.add(comboBox);
+			comboBox.addItem("Sucio");
+			comboBox.addItem("Limpio");
+			comboBox.addItem("Chica");
+			comboBox.addItem("Grande");
 	     
 	     
-	     JButton btnLimpiar = new JButton("Volver");
+	     JButton btnLimpiar = new JButton("Limpiar");
 	     btnLimpiar.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
@@ -98,7 +106,7 @@ public class Ver_habitacion extends JFrame{
 					}
 				}
 			);
-	     btnLimpiar.setBounds(150, 215, 89, 23);
+	     btnLimpiar.setBounds(250, 215, 89, 23);
 			contentPane.add(btnLimpiar);
 	     
 	     

@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import BLL.Administracion;
+import BLL.Cliente;
 
 public class Administrador extends JFrame{
 	private static final long serialVersionUID = 1L;
@@ -42,7 +43,8 @@ public class Administrador extends JFrame{
 		JButton btnCheckout = new JButton("Check-Out");
 		btnCheckout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Checkout pantallaCheckout = new Checkout(administrador);
+				Cliente cliente= administrador.buscar_Cliente();
+				Checkout pantallaCheckout = new Checkout(administrador,  cliente);
 				pantallaCheckout.setVisible(true);
 				dispose();
 			}
