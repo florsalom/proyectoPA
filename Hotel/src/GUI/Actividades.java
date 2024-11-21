@@ -149,7 +149,7 @@ public class Actividades extends JFrame{
 	        
 			
 	}
-//	        public static void main(String[] args) {
+ //       public static void main(String[] args) {
 //	            SwingUtilities.invokeLater(Actividades::new);
 //	        
 //

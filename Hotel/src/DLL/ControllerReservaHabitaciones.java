@@ -22,7 +22,7 @@ public class ControllerReservaHabitaciones {
 			statement.setDate(3, Date.valueOf(reservahabitaciones.getFecha_entrada()));
 			int filas = statement.executeUpdate();
 			if(filas>0) {
-				JOptionPane.showMessageDialog(null, "Se agregó");
+				System.out.println("Se agregó");
 			}
 
 			
@@ -96,7 +96,7 @@ System.out.println("No se agregó");		}
 			statement.setInt(1, id);
 			int fila = statement.executeUpdate();
 			if (fila>0) {
-				JOptionPane.showMessageDialog(null, "Se borró");
+				System.out.println("Se borró");
 			}
 		
 		} catch (Exception e) {
@@ -119,7 +119,7 @@ System.out.println("No se agregó");		}
 			statement.setInt(5, reservahabitaciones.getId());
 			int filas = statement.executeUpdate();
 			if(filas>0) {
-				JOptionPane.showMessageDialog(null, "Se actualizó");
+				System.out.println("Se actualizó");
 			}
 		
 		} catch (Exception e) {

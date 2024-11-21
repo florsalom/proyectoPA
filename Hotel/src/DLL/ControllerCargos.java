@@ -20,7 +20,7 @@ public class ControllerCargos {
 			statement.setString(2, cargo.getCargo());
 			int filas = statement.executeUpdate();
 			if(filas>0) {
-				JOptionPane.showMessageDialog(null, "Se agregó");
+				System.out.println("Se agregó");
 			}
 
 			

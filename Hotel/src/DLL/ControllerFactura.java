@@ -41,7 +41,7 @@ public class ControllerFactura {
 			System.out.println("Costo Final: " + (int)factura.getCosto_Final());
 			int filas = statement.executeUpdate();
 			if(filas>0) {
-				JOptionPane.showMessageDialog(null, "Se agregó");
+				System.out.println("Se agregó");
 			}
 
 			
@@ -117,7 +117,7 @@ System.out.println("No se agregó");		}
 			statement.setInt(1, id);
 			int fila = statement.executeUpdate();
 			if (fila>0) {
-				JOptionPane.showMessageDialog(null, "Se borró");
+				System.out.println("Se borró");
 			}
 		
 		} catch (Exception e) {
@@ -146,7 +146,7 @@ System.out.println("No se agregó");		}
 
 			int fila = statement.executeUpdate();
 			if (fila>0) {
-				JOptionPane.showMessageDialog(null, "Se actualizó");
+				System.out.println("Se actualizó");
 			}
 		
 		} catch (Exception e) {

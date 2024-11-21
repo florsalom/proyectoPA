@@ -307,7 +307,7 @@ public class Administracion extends Empleado implements Validaciones{
 		    }
 
 		    int tipoHabitacion = habitacionCliente.getTipo_habitacion_fk();
-		    JOptionPane.showMessageDialog(null, tipoHabitacion);
+		    
 		    
 		    LinkedList<Habitaciones> habitaciones2= ControllerHabitaciones.MostrarHabitaciones();
 		    int habitacionCostoXDia = 0;
