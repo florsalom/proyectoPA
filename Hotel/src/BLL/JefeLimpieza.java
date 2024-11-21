@@ -35,35 +35,112 @@ public class JefeLimpieza extends Empleado {
 //	}
 	 public void asignar_Trabajo() {
 
+
+		    LinkedList<Habitacion> habitaciones = ControllerHabitacion.MostrarHabitacion();
+
+		    String[] opciones = new String[habitaciones.size()];
+
+		    Habitacion elegida = null;
+
+		    int i = 0;
+
+		    int id = 0;
+
+
+
+		    boolean trabajoD = false;
+
+
+
+		    for (Habitacion habitacion : habitaciones) {
+
+		        if (habitacion.getEstado_limpieza() == 0) {
+
+		            opciones[i] = "Id: " + habitacion.getId() + " Tipo: " + habitacion.getTipo_habitacion_fk() + " Cantidad de huspedes: " + habitacion.getCant_huespedes();
+
+		            i++;
+
+		            trabajoD = true;
+
+		        }
+
+		    }
+
+
+
+		    if (!trabajoD) {
+
+		        JOptionPane.showMessageDialog(null, "No hay trabajo disponible para asignar");
+
+		        return; 
+
+		    }
+
+
+
+		    String habitacion_seleccionada = (String) JOptionPane.showInputDialog(null, "Seleccione una habitación", "Seleccione una Habitación", 0, null, opciones, opciones[0]);
+
+		    
+
+		    try {
+
+		        String[] habitacion_espacio = habitacion_seleccionada.split(" ");
+
+		        id = Integer.parseInt(habitacion_espacio[1]);
+
+		    } catch (Exception e) {
+
+		        JOptionPane.showMessageDialog(null, "Error");
+
+		    }
+
+
+
+		    for (Habitacion habitacion : habitaciones) {
+
+		        if (habitacion.getId() == id) {
+
+		            elegida = habitacion;
+
+		            JOptionPane.showMessageDialog(null, "Tipo: " + habitacion.getTipo_habitacion_fk() + " Cantidad de huspedes: " + habitacion.getCant_huespedes());
+
+		            break;
+
+		        
+
+		    }
+		 
+		    //seleccionar empleado
+		    
 			LinkedList<Empleado> empleados= ControllerEmpleados.MostrarEmpleados();
 
-			String [] opciones = new String[empleados.size()];
+			String [] opciones2 = new String[empleados.size()];
 
 			Empleado asignado=null;
 
-			int i=0;
+			int n=0;
 
-			int id=0;
+			int ide=0;
 
 			for (Empleado empleado : empleados) {
 
 				if (empleado.getCargo()==1) {				
 
-					opciones[i] ="Id: "+empleado.getId()+" cargo: "+empleado.getCargo()+" nombre: "+empleado.getNombre()+" apellido: "+empleado.getApellido();
+					opciones2[n] ="Id: "+empleado.getId()+" cargo: "+empleado.getCargo()+" nombre: "+empleado.getNombre()+" apellido: "+empleado.getApellido();
 
-					i++;
+					n++;
 
 				}
 
 			}				
 
-			String empleado_seleccionado=(String)JOptionPane.showInputDialog(null, "Seleccionar empleado","Seleccionar empleado", 0, null, opciones, opciones[0]);
+			String empleado_seleccionado=(String)JOptionPane.showInputDialog(null, "Seleccionar empleado","Seleccionar empleado", 0, null, opciones2, opciones2[0]);
 
 			try {
 
 				String[] empleado_cargo=empleado_seleccionado.split(" ");
 
-				id =Integer.parseInt(empleado_cargo[1]);			
+				ide =Integer.parseInt(empleado_cargo[1]);			
 
 			} catch (Exception e) {
 
@@ -73,17 +150,20 @@ public class JefeLimpieza extends Empleado {
 
 			for (Empleado empleado : empleados) {
 
-				if (empleado.getId()==id) {
+				if (empleado.getId()==ide) {
 
 					asignado=empleado;
 
-					JOptionPane.showMessageDialog(null, " cargo: "+empleado.getCargo()+" nombre: "+empleado.getNombre()+" apellido: "+empleado.getApellido());			
-
+					JOptionPane.showMessageDialog(null, " cargo: "+empleado.getCargo()+" nombre: "+empleado.getNombre()+" apellido: "+empleado.getApellido() +" asigando a limpiar la habitacion: "+habitacion.getTipo_habitacion_fk() + " Cantidad de huspedes: " + habitacion.getCant_huespedes());			
+					
 					break;
 
 				}
 
 			}	}
+	 }
+	 
+	 
 public void ver_Habitacion() {
 	 LinkedList<Habitacion> habitaciones = ControllerHabitacion.MostrarHabitacion();
 
