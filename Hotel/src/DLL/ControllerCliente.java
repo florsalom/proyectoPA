@@ -25,7 +25,7 @@ public class ControllerCliente {
 			statement.setDate(6, Date.valueOf(cliente.getFecha_entrada()));
 			int filas = statement.executeUpdate();
 			if(filas>0) {
-				JOptionPane.showMessageDialog(null, "Se agregó");
+				System.out.println("Se agregó");
 			}
 
 			
@@ -98,7 +98,7 @@ System.out.println("No se agregó");		}
 			statement.setInt(1, id);
 			int fila = statement.executeUpdate();
 			if (fila>0) {
-				JOptionPane.showMessageDialog(null, "Se borró");
+				System.out.println("Se borró");
 			}
 		
 		} catch (Exception e) {
@@ -107,7 +107,7 @@ System.out.println("No se agregó");		}
 		
 		
 	}
-	public static void ActualizarEmpleado(Cliente cliente) {
+	public static void ActualizarCliente(Cliente cliente) {
 		
 		try {
 			
@@ -125,7 +125,7 @@ System.out.println("No se agregó");		}
 
 			int fila = statement.executeUpdate();
 			if (fila>0) {
-				JOptionPane.showMessageDialog(null, "Se actualizó");
+				System.out.println("Se actualizó");
 			}
 		
 		} catch (Exception e) {

@@ -22,7 +22,7 @@ public class ControllerHabitaciones {
 			statement.setString(2, habitaciones.getTipo());
 			int filas = statement.executeUpdate();
 			if(filas>0) {
-				JOptionPane.showMessageDialog(null, "Se agregó");
+				System.out.println("Se agregó");
 			}
 			
 		} catch (Exception e) {
@@ -76,7 +76,7 @@ System.out.println("No se agregó");		}
 			statement.setInt(1, id);
 			int fila = statement.executeUpdate();
 			if (fila>0) {
-				JOptionPane.showMessageDialog(null, "Se borró");
+				System.out.println("Se borró");
 			}
 		
 		} catch (Exception e) {
@@ -99,7 +99,7 @@ System.out.println("No se agregó");		}
 
 			int fila = statement.executeUpdate();
 			if (fila>0) {
-				JOptionPane.showMessageDialog(null, "Se actualizó");
+				System.out.println("Se actualizó");
 			}
 		
 		} catch (Exception e) {
