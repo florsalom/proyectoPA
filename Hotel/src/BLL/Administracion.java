@@ -2,8 +2,11 @@ package BLL;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
+
 import javax.swing.JOptionPane;
 
 import DLL.ControllerCliente;
@@ -396,8 +399,22 @@ public class Administracion extends Empleado implements Validaciones{
 		return costo;
 	}
 
-	public void reservar_Actividades(){
-		JOptionPane.showMessageDialog(null, "Reservar Actividades");
+	public void reservar_Actividades(Cliente cliente, String inicio, String fin, int id){
+		
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"); 
+		LocalDateTime fechaOutput = LocalDateTime.parse(inicio, formatter);
+
+		LocalDateTime fechaOutput2 = LocalDateTime.parse(fin, formatter);
+		
+		
+		ReservaRecreacion nueva = new ReservaRecreacion(0,cliente.getId(),id,fechaOutput,fechaOutput2);
+		
+		ControllerReservaRecreacion.agregarReservaRecreacion(nueva);
+		
+		
+		
+		
+		
 	}
 
 	public Cliente buscar_Cliente(){

@@ -18,11 +18,15 @@ public class ControllerReservaRecreacion {
 		try {
 			
 			PreparedStatement statement = (PreparedStatement) 
-					con.prepareStatement("INSERT INTO `reserva_recreacion`(`id_cliente_fk`, `id_recreacion_fk`, `inicio`, `fin`) VALUES (?,?,?,?)");
-			statement.setInt(1, reservarecreacion.getId_cliente_fk());
-			statement.setInt(2, reservarecreacion.getId_recreacion_fk());
+					con.prepareStatement("INSERT INTO `reserva_recreacion`( `id_cliente_fk`, `id_recreacion_fk`, `inicio`, `fin`) VALUES (?,?,?,?)");
+			statement.setLong(1, reservarecreacion.getId_cliente_fk());
+			statement.setLong(2, reservarecreacion.getId_recreacion_fk());
 			statement.setTimestamp(3, Timestamp.valueOf(reservarecreacion.getInicio()));
 			statement.setTimestamp(4, Timestamp.valueOf(reservarecreacion.getFin()));
+			System.out.println(reservarecreacion.getId_cliente_fk());
+			System.out.println(reservarecreacion.getId_recreacion_fk());
+			System.out.println(Timestamp.valueOf(reservarecreacion.getInicio()));
+			System.out.println(Timestamp.valueOf(reservarecreacion.getFin()));
 			int filas = statement.executeUpdate();
 			if(filas>0) {
 				System.out.println("Se agregó");

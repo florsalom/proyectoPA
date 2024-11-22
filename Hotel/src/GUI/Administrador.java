@@ -57,7 +57,8 @@ public class Administrador extends JFrame{
 		JButton btnRactividades = new JButton("Reservar Actividades");
 		btnRactividades.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Actividades pantallaRactividades = new Actividades(administrador);
+				Cliente cliente= administrador.buscar_Cliente();
+				Actividades pantallaRactividades = new Actividades(administrador, cliente);
 				pantallaRactividades.setVisible(true);
 				dispose();
 			}
