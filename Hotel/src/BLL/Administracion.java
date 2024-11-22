@@ -82,6 +82,7 @@ public class Administracion extends Empleado implements Validaciones{
 		String lista="";
 		for (int i = 0; i < reservas.size(); i++) {
 			lista=lista+"\n"+reservas.get(i);
+			//ver_Reserva_Recreacion ventana = new ver_Reserva_Recreacion(this); esta loco como que si quiero agregar esta clase, ya existe esta clase
 		}
 		JOptionPane.showMessageDialog(null, lista);
 		
@@ -350,7 +351,7 @@ public class Administracion extends Empleado implements Validaciones{
 		 					break;
 		 				}
 		 			}
-		        	
+		 		    
 		        	
 		        	long horas = Duration.between(inicio, fin).toHours();
 		            JOptionPane.showMessageDialog(null, horas);
