@@ -1,6 +1,7 @@
 package GUI;
 
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -42,7 +43,11 @@ public class Actividades extends JFrame{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel usuario = new JLabel("Bienvenido " + administrador.getNombre());
+		usuario.setBounds(26, 30, 300, 30);
+		contentPane.add(usuario);
 		
+		usuario.setFont(new Font("Ubuntu Medium", Font.BOLD, 20));
 		
 		
 		
@@ -60,9 +65,7 @@ public class Actividades extends JFrame{
 		btnVolver.setBounds(150, 250, 89, 23);
 		contentPane.add(btnVolver);
 
-		JLabel usuario = new JLabel("Bienvenido " + administrador.getNombre());
-		usuario.setBounds(100, 46, 300, 14);
-		contentPane.add(usuario);
+		
 		
 		 filtro = new JTextField();
 		 filtro.setBounds(250, 250, 100, 30);		 

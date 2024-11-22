@@ -51,6 +51,47 @@ String reserva = "INSERT INTO `factura`(`id_cliente_fk`, `id_habitacion_fk`, `fe
 					
 		
 	}
+	public static void agregarFactura2(Factura factura) {
+		try {
+String reserva = "INSERT INTO `factura`(`id_cliente_fk`, `id_habitacion_fk`, `fecha_entrada`, `fecha_salida`, `id_reserva_recreacion_fk`, `costoXhabitacion`, `costoXrecreacion`, `costo_Final`) VALUES (?,?,?,?,?,?,?,?)";
+
+			PreparedStatement statement = (PreparedStatement) 
+					
+					con.prepareStatement ("INSERT INTO `factura`(`id_cliente_fk`, `id_habitacion_fk`, `fecha_entrada`, `fecha_salida`, `id_reserva_recreacion_fk`, `costoXhabitacion`, `costoXrecreacion`, `costo_Final`) VALUES (?,?,?,?,?,?,?,?)");
+			
+			
+			JOptionPane.showMessageDialog(null, factura);
+			statement.setLong(1, factura.getId_cliente_fk());
+			statement.setLong(2, factura.getId_habitacion_fk());
+			statement.setDate(3, Date.valueOf(factura.getFecha_entrada()));
+			statement.setDate(4, Date.valueOf(factura.getFecha_salida()));
+			statement.setLong(5, factura.getid_reserva_recreacion_fk());
+			statement.setLong(6, factura.getCostoXhabitacion());
+			statement.setLong(7, factura.getCostoXrecreacion());
+			statement.setLong(8, (int)factura.getCosto_Final());
+			
+			
+			System.out.println("Insertando factura con valores:");
+			System.out.println("ID Cliente FK: " + factura.getId_cliente_fk());
+			System.out.println("ID Habitación FK: " + factura.getId_habitacion_fk());
+			System.out.println("Fecha Entrada: " + factura.getFecha_entrada());
+			System.out.println("Fecha Salida: " + factura.getFecha_salida());
+			System.out.println("ID Reserva Recreación FK: " + factura.getid_reserva_recreacion_fk());
+			System.out.println("Costo por Habitación: " + factura.getCostoXhabitacion());
+			System.out.println("Costo por Recreación: " + factura.getCostoXrecreacion());
+			System.out.println("Costo Final: " + (int)factura.getCosto_Final());
+			int filas = statement.executeUpdate();
+			if(filas>0) {
+				System.out.println("Se agregó");
+			}
+
+			
+		} catch (Exception e) {
+			System.out.println("No se agregó");		
+			}
+					
+		
+	}
 	public static LinkedList<Factura> MostrarFacturas() {
 		 LinkedList<Factura> factura = new  LinkedList<Factura>();
 		try {

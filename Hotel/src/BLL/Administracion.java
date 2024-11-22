@@ -385,7 +385,14 @@ public class Administracion extends Empleado implements Validaciones{
 		    Factura factura = new Factura(
 		        0, cliente.getId(), habitacionCliente.getId(), fecha_entrada, fecha_salida, idReservaRecreacion, costoXhabitacion, costoXrecreacion, costo_Final);
 
-		    ControllerFactura.agregarFactura(factura);
+		    if (idReservaRecreacion!=0) {
+		    	ControllerFactura.agregarFactura2(factura);
+			} else {
+				ControllerFactura.agregarFactura(factura);
+			}
+		    
+		    
+		    
 		    
 		    JOptionPane.showMessageDialog(null,  factura);
 
