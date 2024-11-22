@@ -39,14 +39,21 @@ public class Checkout extends JFrame{
 	    contentPane.add(lblDatos);
 	    
 	    
-	    
-	    
-	                lblDatos.setText("\nCliente: " + cliente.getNombre() +
-	                                    "\nHabitación: " + administrador.obtenerHabitacion(cliente) +
-	                                    "\nFecha de entrada: " + cliente.getFecha_entrada() +
-	                                    "\nActividades reservadas: " + administrador.obtenerActividades(cliente));
-	       
+	    JLabel lblNombre = new JLabel("Cliente: " + cliente.getNombre());
+	    lblNombre.setBounds(20, 50, 400, 30);
+	    contentPane.add(lblNombre);
 
+	    JLabel lblHabitacion = new JLabel("Habitación: " + administrador.obtenerHabitacion(cliente));
+	    lblHabitacion.setBounds(20, 80, 400, 30);
+	    contentPane.add(lblHabitacion);
+
+	    JLabel lblFechaEntrada = new JLabel("Fecha de entrada: " + cliente.getFecha_entrada());
+	    lblFechaEntrada.setBounds(20, 110, 400, 30);
+	    contentPane.add(lblFechaEntrada);
+
+	    JLabel lblActividades = new JLabel("Actividades reservadas: " + administrador.obtenerActividades(cliente));
+	    lblActividades.setBounds(20, 140, 400, 30);
+	    contentPane.add(lblActividades);
 
 	    JButton btnCheckout = new JButton("Check Out");
 	    btnCheckout.setBounds(130, 200, 100, 23);

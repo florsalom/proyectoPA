@@ -52,7 +52,7 @@ public static void main(String[] args) {
 		String mail = JOptionPane.showInputDialog("Ingrese mail");
 		String cont = JOptionPane.showInputDialog("Ingrese contraseña");
 		
-		Empleado encontrado = Empleado.Login(mail, cont) ;
+		Empleado encontrado = Empleado.login(mail, cont) ;
 		
 		if(encontrado!=null) {
 			JOptionPane.showMessageDialog(null, encontrado);

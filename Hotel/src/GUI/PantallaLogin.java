@@ -86,7 +86,7 @@ public class PantallaLogin extends JFrame{
 					lblerror.setText("No puede ser vacio");
 				} else {
 					lblerror.setVisible(false);
-					Empleado encontrado = Empleado.Login(inpMail.getText(), pswPass.getText()) ;
+					Empleado encontrado = Empleado.login(inpMail.getText(), pswPass.getText()) ;
 					
 					if(encontrado!=null) {
 						if (encontrado.getCargo()==1) {
