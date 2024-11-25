@@ -35,7 +35,8 @@ public class JefeLimpieza extends Empleado {
 //	}
 	 public void asignar_Trabajo() {
 
-
+		 	int t = 0;
+		 	
 		    LinkedList<Habitacion> habitaciones = ControllerHabitacion.MostrarHabitacion();
 
 		    String[] opciones = new String[habitaciones.size()];
@@ -155,7 +156,7 @@ public class JefeLimpieza extends Empleado {
 					asignado=empleado;
 
 					JOptionPane.showMessageDialog(null, " cargo: "+empleado.getCargo()+" nombre: "+empleado.getNombre()+" apellido: "+empleado.getApellido() +" asigando a limpiar la habitacion: "+habitacion.getTipo_habitacion_fk() + " Cantidad de huspedes: " + habitacion.getCant_huespedes());			
-					
+					t=1;
 					break;
 
 				}
