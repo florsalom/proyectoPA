@@ -90,21 +90,21 @@ public class PantallaLogin extends JFrame{
 					
 					if(encontrado!=null) {
 						if (encontrado.getCargo()==1) {
-							Administracion nuevo = new Administracion(encontrado.getId(),encontrado.getCargo(),encontrado.getNombre(),encontrado.getApellido(),encontrado.getDni(),encontrado.getMail(),encontrado.getContrasena());
-							Administrador pantallaAdmin = new Administrador(nuevo);
+						//	Administracion nuevo = new Administracion(encontrado.getId(),encontrado.getCargo(),encontrado.getNombre(),encontrado.getApellido(),encontrado.getDni(),encontrado.getMail(),encontrado.getContrasena());
+							Administrador pantallaAdmin = new Administrador(encontrado);
 							pantallaAdmin.setVisible(true);
 							dispose();
 						} else if (encontrado.getCargo()==2) {
 							
-							JefeLimpieza nuevo = new JefeLimpieza(encontrado.getId(),encontrado.getCargo(),encontrado.getNombre(),encontrado.getApellido(),encontrado.getDni(),encontrado.getMail(),encontrado.getContrasena());
-							Jefe pantallaJefe = new Jefe(nuevo);
+							//JefeLimpieza nuevo = new JefeLimpieza(encontrado.getId(),encontrado.getCargo(),encontrado.getNombre(),encontrado.getApellido(),encontrado.getDni(),encontrado.getMail(),encontrado.getContrasena());
+							Jefe pantallaJefe = new Jefe(encontrado);
 							pantallaJefe.setVisible(true);
-							dispose();nuevo.menu();
+							dispose();
 
 							
 						}else if (encontrado.getCargo()==3) {
-							Limpieza nuevo = new Limpieza(encontrado.getId(),encontrado.getCargo(),encontrado.getNombre(),encontrado.getApellido(),encontrado.getDni(),encontrado.getMail(),encontrado.getContrasena());
-							Limpiador pantallaLimp = new Limpiador(nuevo);
+							//Limpieza nuevo = new Limpieza(encontrado.getId(),encontrado.getCargo(),encontrado.getNombre(),encontrado.getApellido(),encontrado.getDni(),encontrado.getMail(),encontrado.getContrasena());
+							Limpiador pantallaLimp = new Limpiador(encontrado);
 							pantallaLimp.setVisible(true);
 							dispose();
 						}

@@ -1,5 +1,6 @@
 package GUI;
 
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -36,18 +37,14 @@ public class Actividades extends JFrame{
 
 	public Actividades(Administracion administrador, Cliente cliente) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 600);
+		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel usuario = new JLabel("Bienvenido " + administrador.getNombre());
-		usuario.setBounds(26, 30, 300, 30);
-		contentPane.add(usuario);
 		
-		usuario.setFont(new Font("Ubuntu Medium", Font.BOLD, 20));
 		
 		
 		
@@ -62,20 +59,29 @@ public class Actividades extends JFrame{
 				}
 			}
 		);
-		btnVolver.setBounds(150, 250, 89, 23);
+		btnVolver.setBounds(150, 215, 89, 23);
 		contentPane.add(btnVolver);
 
-		
+		JLabel lblfiltro = new JLabel("Ingresar nombre de la recreacion:");
+		lblfiltro.setBounds(180, 20, 200, 14);
+		contentPane.add(lblfiltro);
 		
 		 filtro = new JTextField();
-		 filtro.setBounds(250, 250, 100, 30);		 
+		 filtro.setBounds(180, 50, 100,30);		 
 	     contentPane.add(filtro);
 	     filtro.setVisible(true);
 	     
-	    
-	      
+	     JLabel lblerror = new JLabel("");
+			lblerror.setForeground(new Color(255, 0, 0));
+			lblerror.setBounds(253, 220, 210, 14);
+			contentPane.add(lblerror);
+
+			JLabel lblfecha = new JLabel("Ingresar fecha:");
+			lblfecha.setBounds(26, 20, 200, 14);
+			contentPane.add(lblfecha);
+			
 	        JDateChooser dateChooser1 = new JDateChooser();
-	        dateChooser1.setBounds(70, 70, 200,30);
+	        dateChooser1.setBounds(26, 50, 100,30);
 	        dateChooser1.setDateFormatString("dd/MM/yyyy");
 	        dateChooser1.setVisible(true);
 	   
@@ -83,29 +89,37 @@ public class Actividades extends JFrame{
 	        today.add(Calendar.DAY_OF_YEAR, 1); 
 	        dateChooser1.setMinSelectableDate(today.getTime());
 
+	        JLabel lblhora1 = new JLabel("Ingresar hora de inicio:");
+	        lblhora1.setBounds(26, 80, 200,30);
+			contentPane.add(lblhora1);
+	        
 	        SpinnerNumberModel hourModel = new SpinnerNumberModel(0, 0, 23, 1);
 	        JSpinner hourSpinner = new JSpinner(hourModel);
 	        JSpinner.NumberEditor hourEditor = new JSpinner.NumberEditor(hourSpinner, "00");
 	        hourSpinner.setEditor(hourEditor);
-	        hourSpinner.setBounds(70, 150, 70,30);
+	        hourSpinner.setBounds(26, 110, 70,30);
 
-	        SpinnerNumberModel minuteModel = new SpinnerNumberModel(0, 0, 59, 1);
+	        SpinnerNumberModel minuteModel = new SpinnerNumberModel(0, 0, 59, 10);
 	        JSpinner minuteSpinner = new JSpinner(minuteModel);
 	        JSpinner.NumberEditor minuteEditor = new JSpinner.NumberEditor(minuteSpinner, "00");
 	        minuteSpinner.setEditor(minuteEditor);
-	        minuteSpinner.setBounds(180, 150, 70, 30);
+	        minuteSpinner.setBounds(180, 110, 70, 30);
+	        
+	        JLabel lblhora2 = new JLabel("Ingresar hora de fin:");
+	        lblhora2.setBounds(26, 140, 200,30);
+			contentPane.add(lblhora2);
 	        
 	        SpinnerNumberModel hourModel2 = new SpinnerNumberModel(0, 0, 23, 1);
 	        JSpinner hourSpinner2 = new JSpinner(hourModel2);
 	        JSpinner.NumberEditor hourEditor2 = new JSpinner.NumberEditor(hourSpinner2, "00");
 	        hourSpinner2.setEditor(hourEditor2);
-	        hourSpinner2.setBounds(70, 200, 70,30);
+	        hourSpinner2.setBounds(26, 170, 70,30);
 
-	        SpinnerNumberModel minuteModel2 = new SpinnerNumberModel(0, 0, 59, 1);
+	        SpinnerNumberModel minuteModel2 = new SpinnerNumberModel(0, 0, 59, 10);
 	        JSpinner minuteSpinner2 = new JSpinner(minuteModel2);
 	        JSpinner.NumberEditor minuteEditor2 = new JSpinner.NumberEditor(minuteSpinner2, "00");
 	        minuteSpinner2.setEditor(minuteEditor2);
-	        minuteSpinner2.setBounds(180, 200, 70,30);
+	        minuteSpinner2.setBounds(180, 170, 70,30);
 
 //	        JDateChooser dateChooser2 = new JDateChooser();
 //	        dateChooser2.setDateFormatString("dd/MM/yyyy");
@@ -177,13 +191,15 @@ public class Actividades extends JFrame{
 		                
 		               administrador.reservar_Actividades(cliente, dateTimeString1, dateTimeString2, id);
 
+		               lblerror.setText( administrador.reservar_Actividades(cliente, dateTimeString1, dateTimeString2, id));
+		               
 		            } else {
-		                dateTimeLabel.setText("Debes seleccionar todo.");
+		                lblerror.setText("Debes seleccionar todo.");
 		            }
 				}
 			}
 			);
-			btnEnviar.setBounds(26, 250, 89, 23);
+			btnEnviar.setBounds(26, 215, 89, 23);
 			contentPane.add(btnEnviar);
 
 	        contentPane.add(new JLabel("Fecha 1:"));

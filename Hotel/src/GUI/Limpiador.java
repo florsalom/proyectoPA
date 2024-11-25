@@ -10,13 +10,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import BLL.Administracion;
+import BLL.Empleado;
 import BLL.Limpieza;
 
 public class Limpiador extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	public Limpiador(Limpieza limpieza) {
+	public Limpiador(Empleado empleado) {
+		
+		Limpieza limpieza = new Limpieza(empleado.getId(),empleado.getCargo(),empleado.getNombre(),empleado.getApellido(),empleado.getDni(),empleado.getMail(),empleado.getContrasena());
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

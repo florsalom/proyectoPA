@@ -13,12 +13,16 @@ import javax.swing.border.EmptyBorder;
 
 import BLL.Administracion;
 import BLL.Cliente;
+import BLL.Empleado;
 
 public class Administrador extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	public Administrador(Administracion administrador) {
+	public Administrador(Empleado empleado) {
+		
+		Administracion administrador = new Administracion(empleado.getId(),empleado.getCargo(),empleado.getNombre(),empleado.getApellido(),empleado.getDni(),empleado.getMail(),empleado.getContrasena());
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -82,7 +86,7 @@ public class Administrador extends JFrame{
 		JButton btnVhabitacion = new JButton("Ver Habitación");
 		btnVhabitacion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Ver_habitacion pantallaHabtacion = new Ver_habitacion(administrador);
+				Ver_habitacion pantallaHabtacion = new Ver_habitacion(empleado);
 				pantallaHabtacion.setVisible(true);
 				dispose();
 			}

@@ -345,19 +345,22 @@ public class Administracion extends Empleado implements Validaciones{
 		            break;
 		        }}
 		        
+		    
 		        if (inicio != null && fin != null) {
 		        	 LinkedList<Recreacion> recreaciones= ControllerRecreacion.MostrarRecreacion();
 		 		    
-		 		    for (Recreacion recreacion : recreaciones) {
-		 				if (recreacion.getId()==idRecreacion) {
+		 		    //No esta haciendo el for
+		        	 
+		        	 for (Recreacion recreacion : recreaciones) {
+		        		 if (recreacion.getId()==idRecreacion) {
 		 					recreacionXhora=recreacion.getCostoXhora();
+		 					JOptionPane.showMessageDialog(null, recreacionXhora+"RXH");
 		 					break;
 		 				}
 		 			}
 		 		    
 		        	
 		        	long horas = Duration.between(inicio, fin).toHours();
-		            JOptionPane.showMessageDialog(null, horas);
 		            costoXrecreacion=(int) (horas*recreacionXhora);
 		        
 		    }
@@ -394,7 +397,6 @@ public class Administracion extends Empleado implements Validaciones{
 		    
 		    
 		    
-		    JOptionPane.showMessageDialog(null,  factura);
 
 		
 			return "Se genero la factura correctamente";
@@ -406,17 +408,30 @@ public class Administracion extends Empleado implements Validaciones{
 		return costo;
 	}
 
-	public void reservar_Actividades(Cliente cliente, String inicio, String fin, int id){
+	public String reservar_Actividades(Cliente cliente, String inicio, String fin, int id){
+		
+		LinkedList<ReservaRecreacion> reservas = ControllerReservaRecreacion.MostrarReservaRecreacion();
+		
+		
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"); 
 		LocalDateTime fechaOutput = LocalDateTime.parse(inicio, formatter);
 
 		LocalDateTime fechaOutput2 = LocalDateTime.parse(fin, formatter);
 		
+		for (ReservaRecreacion reservaRecreacion : reservas) {
+			if (reservaRecreacion.getId_recreacion_fk()==id && reservaRecreacion.getInicio()==fechaOutput && reservaRecreacion.getFin()==fechaOutput2) {
+				return "Ya hay una reserva en esas horas";
+			}
+		}
 		
-		ReservaRecreacion nueva = new ReservaRecreacion(0,cliente.getId(),id,fechaOutput,fechaOutput2);
 		
-		ControllerReservaRecreacion.agregarReservaRecreacion(nueva);
+			ReservaRecreacion nueva = new ReservaRecreacion(0,cliente.getId(),id,fechaOutput,fechaOutput2);
+			
+			ControllerReservaRecreacion.agregarReservaRecreacion(nueva);
+			
+			return "Reserva realizada correctamente";
+		
 		
 		
 		

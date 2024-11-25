@@ -22,6 +22,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 import BLL.Administracion;
+import BLL.Empleado;
 import BLL.Habitacion;
 import DLL.ControllerHabitacion;
 
@@ -38,7 +39,7 @@ public class Ver_habitacion extends JFrame{
 	private Habitacion seleccionado;
 	
 
-	public Ver_habitacion(Administracion administrador) {
+	public Ver_habitacion(Empleado empleado) {
 		this.setVisible(true);
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -72,9 +73,17 @@ public class Ver_habitacion extends JFrame{
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				Administrador pantallaAdmin = new Administrador(administrador);
-				pantallaAdmin.setVisible(true);
-				dispose();
+				if (empleado.getCargo()==1) {
+					Administrador pantallaAdmin = new Administrador(empleado);
+					pantallaAdmin.setVisible(true);
+					dispose();
+				} else {
+					Jefe pantallaJefe = new Jefe(empleado);
+					pantallaJefe.setVisible(true);
+					dispose();
+				}
+				
+				
 
 				}
 			}

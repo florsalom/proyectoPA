@@ -10,13 +10,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import BLL.Administracion;
+import BLL.Empleado;
 import BLL.JefeLimpieza;
 
 public class Jefe extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
-	public Jefe(JefeLimpieza jefeLimpieza) {
+	public Jefe(Empleado empleado) {
+		
+		JefeLimpieza jefeLimpieza = new JefeLimpieza(empleado.getId(),empleado.getCargo(),empleado.getNombre(),empleado.getApellido(),empleado.getDni(),empleado.getMail(),empleado.getContrasena());
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -39,7 +45,9 @@ public class Jefe extends JFrame{
 		JButton btnCheckout = new JButton("Ver habitacion");
 		btnCheckout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				jefeLimpieza.ver_Habitacion();
+				Ver_habitacion pantallaHabtacion = new Ver_habitacion(empleado);
+				pantallaHabtacion.setVisible(true);
+				dispose();
 			}
 		}
 		);
