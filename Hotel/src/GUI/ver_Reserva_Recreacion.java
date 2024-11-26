@@ -94,10 +94,38 @@ public class ver_Reserva_Recreacion extends JFrame {
                 model.addRow(new Object[] {
                     reserva.getId(),
                     reserva.getId_cliente_fk(),
-                    reserva.getId_recreacion_fk(),
+                    actividadElegida( reserva.getId_recreacion_fk()),
                     reserva.getInicio(),
                     reserva.getFin()
                 });
         }
     }
-}}
+}
+    
+public static String actividadElegida(int id ) {
+	switch (id) {
+	case 1: {
+		return "Patio";
+	
+		
+	}
+	
+//	default:
+//		throw new IllegalArgumentException("Unexpected value: " + id);
+//	}
+//	  if (filtro.getText().equalsIgnoreCase("Pileta")) {
+//			id=5;
+//		} else if (filtro.getText().equalsIgnoreCase("Voley")) {
+//			id=3;
+//		} else if (filtro.getText().equalsIgnoreCase("Futbol")) {
+//			id=4;
+//		} else if (filtro.getText().equalsIgnoreCase("Paddle")) {
+//			id=2;
+//		} else if (filtro.getText().equalsIgnoreCase("Patio")) {
+//			id=1;
+//		}
+}
+	return null;
+
+}
+}

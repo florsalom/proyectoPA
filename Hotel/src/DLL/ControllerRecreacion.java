@@ -34,13 +34,12 @@ System.out.println("No se agregó");		}
 	public static LinkedList<Recreacion> MostrarRecreacion() {
 		 LinkedList<Recreacion> recreacion = new  LinkedList<Recreacion>();
 		try {
-			
 			PreparedStatement statement = (PreparedStatement) 
 					con.prepareStatement("SELECT * FROM `recreacion`");
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				 
-				recreacion.add(new Recreacion(resultSet.getInt("id"),resultSet.getInt("costoXhora"),resultSet.getString("tipo"),resultSet.getInt("cantidad")));
+				recreacion.add(new Recreacion(resultSet.getInt("id"),resultSet.getInt("costoXhora"),resultSet.getString("tipo"),resultSet.getInt("capacidad")));
 			}
 			
 		} catch (Exception e) {

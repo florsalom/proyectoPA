@@ -29,13 +29,8 @@ public class Limpieza extends Empleado{
 //		}
 //		} while (menu!=1);
 //	}
-		public void ver_Trabajo(asignar_Trabajo()) {
-			if(t==1){
-				JOptionPane.showMessageDialog(null, " Hay trabajo asignado para nombre: "+
-			empleado.getNombre()+" apellido: "+empleado.getApellido() +" asigando a limpiar la habitacion: "+
-						habitacion.getTipo_habitacion_fk() );			
-			}
-
+		public void ver_Trabajo() {
+			
 		    LinkedList<Habitacion> habitaciones = ControllerHabitacion.MostrarHabitacion();
 
 		    String[] opciones = new String[habitaciones.size()];

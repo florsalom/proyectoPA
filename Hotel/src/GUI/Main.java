@@ -1,5 +1,6 @@
 package GUI;
 import java.time.LocalDate;
+import java.util.LinkedList;
 
 import javax.swing.JOptionPane;
 
@@ -9,7 +10,9 @@ import BLL.Hotel;
 import BLL.Hotel_Singleton;
 import BLL.JefeLimpieza;
 import BLL.Limpieza;
+import BLL.Recreacion;
 import BLL.ReservaHabitaciones;
+import BLL.ReservaRecreacion;
 import DLL.ControllerCliente;
 import DLL.ControllerEmpleados;
 import DLL.ControllerFactura;
@@ -20,6 +23,9 @@ import DLL.ControllerReservaRecreacion;
 public class Main {
 
 public static void main(String[] args) {
+	
+	 LinkedList<Recreacion> recreaciones= ControllerRecreacion.MostrarRecreacion();
+	    JOptionPane.showMessageDialog(null, recreaciones);
 	
 	Hotel hotel= Hotel_Singleton.getHotel();
 	hotel.getEmpleados().add(new Empleado(0,1,"","",0,"a@a","1234"));

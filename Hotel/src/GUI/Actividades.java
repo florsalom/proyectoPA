@@ -189,8 +189,6 @@ public class Actividades extends JFrame{
 		                String dateTimeString2 = dateTimeFormat.format(selectedDateTime2.getTime());
 
 		                
-		               administrador.reservar_Actividades(cliente, dateTimeString1, dateTimeString2, id);
-
 		               lblerror.setText( administrador.reservar_Actividades(cliente, dateTimeString1, dateTimeString2, id));
 		               
 		            } else {

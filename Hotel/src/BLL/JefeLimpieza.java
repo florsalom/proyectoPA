@@ -109,7 +109,7 @@ public class JefeLimpieza extends Empleado {
 
 		        
 
-		    }
+		    }}
 		 
 		    //seleccionar empleado
 		    
@@ -125,7 +125,7 @@ public class JefeLimpieza extends Empleado {
 
 			for (Empleado empleado : empleados) {
 
-				if (empleado.getCargo()==1) {				
+				if (empleado.getCargo()==3) {				
 
 					opciones2[n] ="Id: "+empleado.getId()+" cargo: "+empleado.getCargo()+" nombre: "+empleado.getNombre()+" apellido: "+empleado.getApellido();
 
@@ -155,14 +155,14 @@ public class JefeLimpieza extends Empleado {
 
 					asignado=empleado;
 
-					JOptionPane.showMessageDialog(null, " cargo: "+empleado.getCargo()+" nombre: "+empleado.getNombre()+" apellido: "+empleado.getApellido() +" asigando a limpiar la habitacion: "+habitacion.getTipo_habitacion_fk() + " Cantidad de huspedes: " + habitacion.getCant_huespedes());			
+					JOptionPane.showMessageDialog(null, " cargo: "+empleado.getCargo()+" nombre: "+empleado.getNombre()+" apellido: "+empleado.getApellido() +" asigando a limpiar la habitacion: "+elegida.getTipo_habitacion_fk() + " Cantidad de huspedes: " + elegida.getCant_huespedes());			
 					t=1;
 					break;
 
 				}
 
 			}	}
-	 }
+	 
 	 
 	 
 public void ver_Habitacion() {
